@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-container": "#316bf3", "tertiary-container": "#002f2a", "tertiary-fixed-dim": "#6bd8cb", "on-tertiary-fixed-variant": "#005049", "on-primary-fixed-variant": "#314863", "surface-container": "#eceef0", "on-surface-variant": "#43474d", "outline": "#74777e", "primary": "#00152a", "on-secondary-fixed": "#00174b", "tertiary-fixed": "#89f5e7", "surface-dim": "#d8dadc", "on-primary": "#ffffff", "on-background": "#191c1e", "surface": "#f7f9fb", "surface-bright": "#f7f9fb", "on-tertiary": "#ffffff", "on-secondary-container": "#fefcff", "secondary-fixed-dim": "#b4c5ff", "error-container": "#ffdad6", "on-secondary": "#ffffff", "inverse-surface": "#2d3133", "primary-container": "#102a43", "tertiary": "#001815", "inverse-on-surface": "#eff1f3", "surface-tint": "#49607c", "inverse-primary": "#b0c9e8", "on-tertiary-container": "#28a094", "on-tertiary-fixed": "#00201d", "surface-container-high": "#e6e8ea", "on-error-container": "#93000a", "on-secondary-fixed-variant": "#003ea8", "on-error": "#ffffff", "primary-fixed": "#d1e4ff", "on-primary-fixed": "#011d35", "primary-fixed-dim": "#b0c9e8", "background": "#f7f9fb", "surface-container-lowest": "#ffffff", "surface-container-highest": "#e0e3e5", "surface-container-low": "#f2f4f6", "secondary-fixed": "#dbe1ff", "outline-variant": "#c3c6ce", "error": "#ba1a1a", "secondary": "#0051d5", "on-surface": "#191c1e", "surface-variant": "#e0e3e5", "on-primary-container": "#7a92b0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "margin": "2rem", "space-md": "1rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem" }, "fontFamily": { "label-sm": ["Inter"], "body-md": ["Inter"], "label-md": ["Inter"], "headline-xl": ["Inter"], "label-lg": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Inter"], "body-sm": ["Inter"], "headline-sm": ["Inter"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }] } } } }</script><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></head><body class="bg-surface font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col pt-space-xl pb-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="px-space-lg mb-space-xl flex items-center gap-space-md"><img alt="Eventora Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEhICH3M45UYZ5jPj-vC2vEEwK5mwaytNcwqqrcBLHuHgtK1zQBA2HRDgnQDZ1bMexVRDBqeRp8NVKqJzgmW2MiBVF3HaI9z4n0JnSytcNTvFI89cKkWVsAfmypLknX8YcJIrciLiH5ZYvhr2S6AA4sKmVkKTxnIoisq3GwxKQnYWEVUVQ0q3YblmIvbyfmEvAbTiY_JJG50S7VDtKtfWdpijdo-xkdad7aGFQ2v7s"/><span class="font-headline-md text-primary font-bold tracking-tight">Eventora</span></div><nav class="flex-1 px-space-md space-y-space-xs overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-bold"><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="home" href="#"><span class="material-symbols-outlined mr-space-md">home</span>Home</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="explore-events" href="#"><span class="material-symbols-outlined mr-space-md">explore</span>Explore Events</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="student-dashboard" href="#"><span class="material-symbols-outlined mr-space-md">dashboard</span>Student Dashboard</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="admin-analytics" href="#"><span class="material-symbols-outlined mr-space-md">analytics</span>Admin Analytics</a><a aria-current="page" class="flex items-center px-space-md py-space-sm rounded-xl transition-all bg-primary-container text-on-primary-container font-bold" data-path="ai-event-copilot" href="#"><span class="material-symbols-outlined mr-space-md">auto_awesome</span>AI Event Copilot</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="qr-attendance-scanner" href="#"><span class="material-symbols-outlined mr-space-md">qr_code_scanner</span>QR Attendance Scanner</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="certificates" href="#"><span class="material-symbols-outlined mr-space-md">card_membership</span>Certificates</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="notifications" href="#"><span class="material-symbols-outlined mr-space-md">notifications</span>Notifications</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="profile" href="#"><span class="material-symbols-outlined mr-space-md">person</span>Profile</a></nav></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="flex items-center bg-surface-container-low px-space-md py-space-xs rounded-xl w-96 gap-space-sm"><span class="material-symbols-outlined text-outline text-[20px]">search</span><input class="bg-transparent border-none outline-none text-body-md text-on-surface w-full" placeholder="Search events, certificates, users..." type="text"/></div><div class="flex items-center gap-space-md"><button class="w-10 h-10 rounded-full hover:bg-surface-container-high flex items-center justify-center transition-colors relative"><span class="material-symbols-outlined text-on-surface-variant">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 bg-surface min-h-screen p-space-xl"><div class="flex flex-col w-full">
+<!-- Hero / Introduction banner -->
+<div class="mb-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg">
+<div>
+<span class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-primary-container text-on-primary-container font-label-md mb-space-sm">
+<span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+          AI Engine v3.8 Active
+        </span>
+<h1 class="font-headline-xl text-primary font-bold">AI Event Copilot</h1>
+<p class="font-body-lg text-on-surface-variant mt-space-xs max-w-2xl">
+          Transform raw concepts into fully scheduled, branded, and automated events in seconds. Type your idea below or choose a prompt to begin.
+        </p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-lg py-space-sm rounded-xl bg-surface-container-high text-on-surface font-label-lg hover:bg-surface-container-highest transition-all flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">history</span>
+          Prompt History
+        </button>
+</div>
+</div>
+</div>
+<!-- Feature 1: Natural Language Event Prompt Box -->
+<div class="bg-surface-container-low rounded-xl p-space-xl mb-space-xl shadow-[0_4px_20px_-4px_rgba(16,42,67,0.06)]">
+<div class="flex items-center justify-between mb-space-md">
+<label class="font-headline-sm text-primary flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary">terminal</span>
+        Describe Your Event Vision
+      </label>
+<span class="font-label-sm text-outline">Press Shift + Enter for new line</span>
+</div>
+<div class="relative bg-surface-container-lowest rounded-xl p-space-md shadow-inner mb-space-md">
+<textarea class="w-full bg-transparent border-none outline-none font-body-lg text-on-surface resize-none placeholder:text-outline" id="eventPromptInput" placeholder="e.g., Global FinTech Hackathon in New York with 300 participants, keynote on DeFi, 3 tracks, and automated discord integration..." rows="3"></textarea>
+<div class="flex items-center justify-between pt-space-sm">
+<div class="flex items-center gap-space-xs">
+<button class="p-space-sm rounded-lg hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Attach Brand Guidelines">
+<span class="material-symbols-outlined text-[20px]">attach_file</span>
+</button>
+<button class="p-space-sm rounded-lg hover:bg-surface-container-low text-on-surface-variant transition-colors" title="AI Tone Selector">
+<span class="material-symbols-outlined text-[20px]">psychology</span>
+</button>
+</div>
+<button class="px-space-xl py-space-sm rounded-xl bg-secondary text-on-secondary font-label-lg hover:bg-primary transition-all flex items-center gap-space-sm shadow-md" id="generateBtn" onclick="triggerAIGeneration()">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+          Generate Event Blueprint
+        </button>
+</div>
+</div>
+<!-- Prompt Suggestion Pills -->
+<div>
+<p class="font-label-md text-on-surface-variant mb-space-xs">Suggested Prompts:</p>
+<div class="flex flex-wrap gap-space-sm">
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface font-label-md hover:bg-primary-container hover:text-on-primary-container transition-all shadow-sm flex items-center gap-space-xs" onclick="setPrompt('3-day Web3 hackathon with 500 devs, mentoring sessions, and live demo night')">
+<span class="material-symbols-outlined text-[14px]">code</span>
+          3-day Web3 hackathon with 500 devs
+        </button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface font-label-md hover:bg-primary-container hover:text-on-primary-container transition-all shadow-sm flex items-center gap-space-xs" onclick="setPrompt('AI &amp; Healthcare Summit with 8 keynote speakers, interactive workshops, and CE credits')">
+<span class="material-symbols-outlined text-[14px]">health_and_safety</span>
+          AI &amp; Healthcare Summit with 8 speakers
+        </button>
+<button class="px-space-md py-space-xs rounded-full bg-surface-container-lowest text-on-surface font-label-md hover:bg-primary-container hover:text-on-primary-container transition-all shadow-sm flex items-center gap-space-xs" onclick="setPrompt('Annual Cultural Fest &amp; Concert featuring 3 indie bands, food trucks, and art installations')">
+<span class="material-symbols-outlined text-[14px]">festival</span>
+          Annual Cultural Fest &amp; Concert
+        </button>
+</div>
+</div>
+</div>
+<!-- Feature 2: AI Generation Workspace (Initially shown with sample data / ready state) -->
+<div class="bg-surface-container-low rounded-xl p-space-xl shadow-[0_4px_20px_-4px_rgba(16,42,67,0.06)] mb-space-xl hidden transition-all" id="aiWorkspace">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md pb-space-lg mb-space-lg border-b border-surface-container-high">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-[24px]">smart_toy</span>
+</div>
+<div>
+<h2 class="font-headline-md text-primary font-bold">Generated Blueprint: Web3 Nova Hackathon</h2>
+<p class="font-body-sm text-on-surface-variant">Created in 1.4 seconds using Gemini 1.5 Pro Engine</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-space-sm rounded-xl bg-surface-container-high text-on-surface font-label-md hover:bg-surface-container-highest transition-all flex items-center gap-space-xs" onclick="triggerAIGeneration()">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+          Regenerate
+        </button>
+<button class="px-space-md py-space-sm rounded-xl bg-primary text-on-primary font-label-md hover:bg-primary-container transition-all flex items-center gap-space-xs" onclick="openRefineModal()">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+          Refine with AI
+        </button>
+</div>
+</div>
+<!-- Workspace Tabs -->
+<div class="flex border-b border-surface-container-high gap-space-lg mb-space-lg overflow-x-auto">
+<button class="pb-space-sm font-label-lg text-secondary border-b-2 border-secondary transition-all flex items-center gap-space-xs whitespace-nowrap" id="tab-btn-details" onclick="switchTab('details')">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+        Event Details &amp; Branding
+      </button>
+<button class="pb-space-sm font-label-lg text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-space-xs whitespace-nowrap" id="tab-btn-agenda" onclick="switchTab('agenda')">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+        Multi-Day Agenda
+      </button>
+<button class="pb-space-sm font-label-lg text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-space-xs whitespace-nowrap" id="tab-btn-tickets" onclick="switchTab('tickets')">
+<span class="material-symbols-outlined text-[18px]">confirmation_number</span>
+        Registration &amp; Tickets
+      </button>
+<button class="pb-space-sm font-label-lg text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-space-xs whitespace-nowrap" id="tab-btn-emails" onclick="switchTab('emails')">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+        Automated Sequences
+      </button>
+</div>
+<!-- Tab 1 Content: Details & Branding -->
+<div class="space-y-space-lg" id="tab-details">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<span class="font-label-sm text-outline uppercase tracking-wider">Event Title</span>
+<p class="font-headline-sm text-primary font-bold mt-space-xs">Web3 Nova Hackathon 2025</p>
+<span class="inline-block mt-space-md px-space-sm py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm">Hackathon</span>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<span class="font-label-sm text-outline uppercase tracking-wider">Tagline &amp; Vision</span>
+<p class="font-body-md text-on-surface mt-space-xs italic">"Building decentralized futures through rapid prototyping and zero-knowledge architecture."</p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<span class="font-label-sm text-outline uppercase tracking-wider">Target Capacity</span>
+<p class="font-headline-sm text-primary font-bold mt-space-xs">500 Developers</p>
+<p class="font-body-sm text-on-surface-variant mt-1">Hybrid (Virtual + San Francisco Hub)</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<h3 class="font-headline-sm text-primary mb-space-md">AI Visual &amp; Theme Direction</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="h-40 rounded-lg bg-cover bg-center" data-alt="Cyberpunk futuristic glowing circuit boards in deep navy and electric blue tones for Web3 event branding" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD86FG19cYdGsj0TbTLGbgex0bcH_Efk_2X9RiqeWpBAUJLCRT1PgKLvMCgsyeggUu39ZMuSeR-zW1T5CD5GL6lFmAU13UFZrwZAfPJkSf7e5RbHOdI9_AcBnVyTZt5DvBJ10TS8Zp_rxOI1Qya2Y2YbmUcgNu3_einjurCWaykxTXsl3z0S-yQH6M5724dzV9VVDyg_OUpwQZ5-MD4AXZdK-C3UJslkwP5NEuC-qir')"></div>
+<div class="h-40 rounded-lg bg-cover bg-center" data-alt="Modern minimalist workspace with multiple monitors displaying cryptographic code and graphs" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7hE6nBgA6kDEjLlEYEkkL6JE6Edn32Nqkgmco7BxkMSiFKzIh9D9AngniOVhB_XrApSKDaF3zGFhJ3Vb-rD6kc0ZbeDToWL5iA2RedQLqFBdHkbDP_qmF5K_hBj_0FXHOYbj_2WdyUC40OXvgNAUkxd9IS7tgcuM7Uu8zKxTX5zJUOsDSEO7qFw4X8RinM6rcg4cgaTBWg00aJr8xS7vz1ZjXJw5ySNqPSfT6VHyj')"></div>
+<div class="h-40 rounded-lg bg-cover bg-center" data-alt="Developers collaborating over whiteboards with futuristic digital UI overlay sketches" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDhk47dVk5rN5qWsFrYK5n6rpDZVftSwsGxZ-2cRrMvkUxqCtCf2t4hLhjpPZGL-9YY-EN6SL909x6PltrWrM8XRhEv_zriGiSScRVf8lQAkL6vf0CrwFl5GY-ZZdGuVrdGwuHusAbpDgIpZjiUIPsFZo_7yDk8rY7hPJLk2pPoAiIoVKqTo_oSLuM3-jVvYcWMu6MyDJynq6uBbcAVKPKllWm28iHbpFjkay6YBpw3')"></div>
+</div>
+</div>
+</div>
+<!-- Tab 2 Content: Multi-Day Agenda -->
+<div class="space-y-space-md hidden" id="tab-agenda">
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<h3 class="font-headline-sm text-primary">Day 1: Kickoff &amp; Ideation</h3>
+<span class="font-label-md text-secondary bg-secondary-container px-space-sm py-space-xs rounded-lg">October 12, 2025</span>
+</div>
+<div class="space-y-space-sm">
+<div class="flex items-start gap-space-md p-space-md rounded-lg bg-surface-container-low">
+<span class="font-label-md text-on-surface-variant w-24">09:00 AM</span>
+<div>
+<p class="font-label-lg text-on-surface font-bold">Keynote: The State of Zero-Knowledge Proofs</p>
+<p class="font-body-sm text-on-surface-variant">Speaker: Dr. Elena Vance, Chief Cryptographer</p>
+</div>
+</div>
+<div class="flex items-start gap-space-md p-space-md rounded-lg bg-surface-container-low">
+<span class="font-label-md text-on-surface-variant w-24">11:00 AM</span>
+<div>
+<p class="font-label-lg text-on-surface font-bold">Team Formation &amp; Idea Pitches</p>
+<p class="font-body-sm text-on-surface-variant">Speed-networking session to align developers around core challenges.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-md p-space-md rounded-lg bg-surface-container-low">
+<span class="font-label-md text-on-surface-variant w-24">02:00 PM</span>
+<div>
+<p class="font-label-lg text-on-surface font-bold">Hacking Begins! (48-Hour Block)</p>
+<p class="font-body-sm text-on-surface-variant">Mentor office hours open across Discord channels.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<h3 class="font-headline-sm text-primary">Day 2: Workshops &amp; Deep Dive</h3>
+<span class="font-label-md text-secondary bg-secondary-container px-space-sm py-space-xs rounded-lg">October 13, 2025</span>
+</div>
+<div class="space-y-space-sm">
+<div class="flex items-start gap-space-md p-space-md rounded-lg bg-surface-container-low">
+<span class="font-label-md text-on-surface-variant w-24">10:00 AM</span>
+<div>
+<p class="font-label-lg text-on-surface font-bold">Workshop: Building Smart Contracts on Layer 2</p>
+<p class="font-body-sm text-on-surface-variant">Hands-on coding lab with live debugging.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab 3 Content: Registration & Tickets -->
+<div class="space-y-space-lg hidden" id="tab-tickets">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<span class="inline-block px-space-sm py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm mb-space-sm">Free Tier</span>
+<h4 class="font-headline-sm text-primary font-bold">Virtual Pass</h4>
+<p class="font-body-sm text-on-surface-variant mt-space-xs">Access to live streams, discord channels, and virtual workshops.</p>
+</div>
+<div class="mt-space-lg">
+<p class="font-headline-md text-primary font-bold">$0 <span class="font-body-sm text-outline">/ 400 available</span></p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between border-2 border-secondary">
+<div>
+<span class="inline-block px-space-sm py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm mb-space-sm">Most Popular</span>
+<h4 class="font-headline-sm text-primary font-bold">In-Person Hacker Pass</h4>
+<p class="font-body-sm text-on-surface-variant mt-space-xs">Full venue access in SF, meals, swag kit, and mentor matchmaking.</p>
+</div>
+<div class="mt-space-lg">
+<p class="font-headline-md text-secondary font-bold">$49 <span class="font-body-sm text-outline">/ 100 available</span></p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<span class="inline-block px-space-sm py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm mb-space-sm">VIP Tier</span>
+<h4 class="font-headline-sm text-primary font-bold">Sponsor &amp; VIP Pass</h4>
+<p class="font-body-sm text-on-surface-variant mt-space-xs">Includes lounge access, investor breakfast, and priority judging slots.</p>
+</div>
+<div class="mt-space-lg">
+<p class="font-headline-md text-primary font-bold">$199 <span class="font-body-sm text-outline">/ 25 available</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab 4 Content: Automated Email Sequences -->
+<div class="space-y-space-md hidden" id="tab-emails">
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<h4 class="font-label-lg text-primary font-bold flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">schedule</span>
+            Trigger: Immediate Upon Registration
+          </h4>
+<span class="font-label-sm text-on-tertiary-container bg-tertiary-container px-space-sm py-0.5 rounded-full">Active Automation</span>
+</div>
+<p class="font-body-md text-on-surface font-semibold">Subject: Welcome to Web3 Nova Hackathon! Your Pass is Ready 🚀</p>
+<p class="font-body-sm text-on-surface-variant mt-space-xs">"Hi {{firstName}}, you're officially registered! Join our Discord server and check out the schedule to start prepping your team..."</p>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<h4 class="font-label-lg text-primary font-bold flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">schedule</span>
+            Trigger: 24 Hours Before Event Start
+          </h4>
+<span class="font-label-sm text-on-tertiary-container bg-tertiary-container px-space-sm py-0.5 rounded-full">Active Automation</span>
+</div>
+<p class="font-body-md text-on-surface font-semibold">Subject: Final Checklist &amp; Venue Access Guide</p>
+<p class="font-body-sm text-on-surface-variant mt-space-xs">"Hey {{firstName}}, we kick off tomorrow at 9 AM sharp. Make sure your environment is configured and your team is ready for the opening keynote..."</p>
+</div>
+</div>
+<!-- Feature 3: One-Click Review & Publish Suite -->
+<div class="mt-space-xl pt-space-lg border-t border-surface-container-high flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-space-sm rounded-xl bg-surface-container-high text-on-surface font-label-lg hover:bg-surface-container-highest transition-all flex items-center gap-space-xs" onclick="openRefineModal()">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+          Refine Prompt
+        </button>
+<button class="px-space-md py-space-sm rounded-xl bg-surface-container-high text-on-surface font-label-lg hover:bg-surface-container-highest transition-all flex items-center gap-space-xs" onclick="saveDraftNotification()">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+          Save Draft
+        </button>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-xl py-space-sm rounded-xl bg-secondary text-on-secondary font-label-lg hover:bg-primary transition-all flex items-center gap-space-sm shadow-md" onclick="openPublishModal()">
+<span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+          Publish Event Live
+        </button>
+</div>
+</div>
+</div>
+<!-- Refine Modal (Hidden by default) -->
+<div class="fixed inset-0 bg-primary/40 backdrop-blur-sm z-50 flex items-center justify-center p-space-lg hidden" id="refineModal">
+<div class="bg-surface-container-lowest rounded-xl p-space-xl max-w-lg w-full shadow-xl">
+<div class="flex items-center justify-between mb-space-lg">
+<h3 class="font-headline-sm text-primary font-bold">Refine Event with AI</h3>
+<button class="w-8 h-8 rounded-full hover:bg-surface-container-low flex items-center justify-center" onclick="closeRefineModal()">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<p class="font-body-sm text-on-surface-variant mb-space-md">Provide specific instructions for the AI to update the current blueprint (e.g., 'Change capacity to 800', 'Add a beginner track', 'Make the tone more formal').</p>
+<textarea class="w-full bg-surface-container-low rounded-xl p-space-md border-none outline-none font-body-md text-on-surface mb-space-lg" placeholder="Type refinement instructions..." rows="4"></textarea>
+<div class="flex justify-end gap-space-sm">
+<button class="px-space-md py-space-sm rounded-xl bg-surface-container-high text-on-surface font-label-lg" onclick="closeRefineModal()">Cancel</button>
+<button class="px-space-lg py-space-sm rounded-xl bg-secondary text-on-secondary font-label-lg hover:bg-primary transition-all" onclick="applyRefinement()">Apply Changes</button>
+</div>
+</div>
+</div>
+<!-- Publish Modal (Hidden by default) -->
+<div class="fixed inset-0 bg-primary/40 backdrop-blur-sm z-50 flex items-center justify-center p-space-lg hidden" id="publishModal">
+<div class="bg-surface-container-lowest rounded-xl p-space-xl max-w-lg w-full shadow-xl text-center">
+<div class="w-16 h-16 rounded-full bg-secondary-container text-on-secondary-container mx-auto flex items-center justify-center mb-space-md">
+<span class="material-symbols-outlined text-[32px]">celebration</span>
+</div>
+<h3 class="font-headline-md text-primary font-bold mb-space-xs">Ready to Publish Live?</h3>
+<p class="font-body-md text-on-surface-variant mb-space-xl">Your event landing page, ticket tiers, and automated email sequences will go live instantly on eventora.io/web3-nova-2025.</p>
+<div class="flex items-center justify-center gap-space-md">
+<button class="px-space-lg py-space-sm rounded-xl bg-surface-container-high text-on-surface font-label-lg" onclick="closePublishModal()">Review Again</button>
+<button class="px-space-xl py-space-sm rounded-xl bg-secondary text-on-secondary font-label-lg hover:bg-primary transition-all" onclick="confirmPublish()">Confirm &amp; Publish</button>
+</div>
+</div>
+</div>
+<!-- Toast Notification (Hidden by default) -->
+<div class="fixed bottom-space-xl right-space-xl bg-primary text-on-primary px-space-lg py-space-md rounded-xl shadow-2xl z-50 flex items-center gap-space-md translate-y-20 opacity-0 transition-all duration-300" id="toastNotification">
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-label-lg font-bold" id="toastTitle">Action Successful</p>
+<p class="font-body-sm text-outline-variant" id="toastDesc">Your changes have been saved.</p>
+</div>
+</div>
+<!-- Client-side interaction script -->
+<script>
+    function setPrompt(text) {
+      document.getElementById('eventPromptInput').value = text;
+      document.getElementById('eventPromptInput').focus();
+    }
+
+    function triggerAIGeneration() {
+      const btn = document.getElementById('generateBtn');
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span> Generating...';
+      setTimeout(() => {
+        btn.innerHTML = '<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: \'FILL\' 1;">auto_awesome</span> Generate Event Blueprint';
+        const workspace = document.getElementById('aiWorkspace');
+        workspace.classList.remove('hidden');
+        workspace.scrollIntoView({ behavior: 'smooth' });
+        showToast('AI Blueprint Generated', 'Successfully structured event details, agenda, and ticketing.');
+      }, 1000);
+    }
+
+    function switchTab(tabName) {
+      const tabs = ['details', 'agenda', 'tickets', 'emails'];
+      tabs.forEach(t => {
+        document.getElementById('tab-' + t).classList.add('hidden');
+        document.getElementById('tab-btn-' + t).classList.remove('text-secondary', 'border-b-2', 'border-secondary');
+        document.getElementById('tab-btn-' + t).classList.add('text-on-surface-variant');
+      });
+      document.getElementById('tab-' + tabName).classList.remove('hidden');
+      document.getElementById('tab-btn-' + tabName).classList.add('text-secondary', 'border-b-2', 'border-secondary');
+      document.getElementById('tab-btn-' + tabName).classList.remove('text-on-surface-variant');
+    }
+
+    function openRefineModal() {
+      document.getElementById('refineModal').classList.remove('hidden');
+    }
+
+    function closeRefineModal() {
+      document.getElementById('refineModal').classList.add('hidden');
+    }
+
+    function applyRefinement() {
+      closeRefineModal();
+      showToast('AI Refinement Applied', 'Updated blueprint based on your instructions.');
+    }
+
+    function openPublishModal() {
+      document.getElementById('publishModal').classList.remove('hidden');
+    }
+
+    function closePublishModal() {
+      document.getElementById('publishModal').classList.add('hidden');
+    }
+
+    function confirmPublish() {
+      closePublishModal();
+      showToast('Event Published Live! 🚀', 'Your event is now live on eventora.io.');
+    }
+
+    function saveDraftNotification() {
+      showToast('Draft Saved', 'You can resume editing anytime from your dashboard.');
+    }
+
+    function showToast(title, desc) {
+      const toast = document.getElementById('toastNotification');
+      document.getElementById('toastTitle').innerText = title;
+      document.getElementById('toastDesc').innerText = desc;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 4000);
+    }
+  </script>
+</div></main></div></body></html>

@@ -1,0 +1,427 @@
+[
+  {
+    "generic_molecule_slug": "paracetamol-650mg",
+    "molecule_name": "Paracetamol Tablets IP 650mg",
+    "pmbjp_drug_code": "PMBJP00124",
+    "dosage_form": "Tablet",
+    "pack_size": 10,
+    "jan_aushadhi_mrp": 9.50,
+    "jan_aushadhi_unit_price": 0.95,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Paracetamol Generic IP (Cipla Generic)",
+        "mrp": 14.00,
+        "pack_size": 10,
+        "manufacturer": "Cipla Ltd (Generic Division)"
+      },
+      {
+        "brand_name": "Pyragesic Generic (Mankind)",
+        "mrp": 15.50,
+        "pack_size": 10,
+        "manufacturer": "Mankind Pharma Ltd"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "Indian Pharmacopoeia (IP) / CDSCO / WHO-GMP",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "Demonstrates 99.8% identical bioavailability and rate of dissolution compared to innovator formulation in human clinical bioequivalence trials."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 2.25,
+      "generic_unit_price": 0.95,
+      "savings_percent": 57.8,
+      "annual_saving_per_daily_user": 474.50
+    }
+  },
+  {
+    "generic_molecule_slug": "pantoprazole-40mg-domperidone-30mg",
+    "molecule_name": "Pantoprazole Gastro-resistant & Domperidone Prolonged-release Capsules IP (40mg + 30mg)",
+    "pmbjp_drug_code": "PMBJP00892",
+    "dosage_form": "Capsule (SR)",
+    "pack_size": 10,
+    "jan_aushadhi_mrp": 32.00,
+    "jan_aushadhi_unit_price": 3.20,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Pantoprazole + Domperidone SR Generic (Torrent)",
+        "mrp": 65.00,
+        "pack_size": 10,
+        "manufacturer": "Torrent Pharmaceuticals"
+      },
+      {
+        "brand_name": "Panto-D Generic (Zydus)",
+        "mrp": 58.00,
+        "pack_size": 10,
+        "manufacturer": "Zydus Healthcare"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "CDSCO / US-FDA Bioequivalence Guidelines / WHO-GMP",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "Clinically proven enteric-coated pantoprazole and sustained-release domperidone pellets showing identical acid suppression profile and AUC curves."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 23.50,
+      "generic_unit_price": 3.20,
+      "savings_percent": 86.4,
+      "annual_saving_per_daily_user": 7409.50
+    }
+  },
+  {
+    "generic_molecule_slug": "amoxicillin-500mg-clavulanic-acid-125mg",
+    "molecule_name": "Amoxycillin & Potassium Clavulanate Tablets IP 625mg (500mg + 125mg)",
+    "pmbjp_drug_code": "PMBJP00054",
+    "dosage_form": "Tablet",
+    "pack_size": 10,
+    "jan_aushadhi_mrp": 60.00,
+    "jan_aushadhi_unit_price": 6.00,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Amoxyclav Generic 625 (Abbott Generic)",
+        "mrp": 115.00,
+        "pack_size": 10,
+        "manufacturer": "Abbott Healthcare"
+      },
+      {
+        "brand_name": "Clavam Generic (Alkem Generic)",
+        "mrp": 128.00,
+        "pack_size": 10,
+        "manufacturer": "Alkem Laboratories"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "Indian Pharmacopoeia (IP) / WHO-GMP Certified",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "Meets stringent cGMP requirements for clavulanic acid moisture-barrier blister stability and equivalent bactericidal serum concentration."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 22.40,
+      "generic_unit_price": 6.00,
+      "savings_percent": 73.2,
+      "annual_saving_per_daily_user": 11972.00
+    }
+  },
+  {
+    "generic_molecule_slug": "azithromycin-500mg",
+    "molecule_name": "Azithromycin Tablets IP 500mg",
+    "pmbjp_drug_code": "PMBJP00102",
+    "dosage_form": "Tablet",
+    "pack_size": 3,
+    "jan_aushadhi_mrp": 24.00,
+    "jan_aushadhi_unit_price": 8.00,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Azithromycin Generic IP (Lupin Generic)",
+        "mrp": 45.00,
+        "pack_size": 3,
+        "manufacturer": "Lupin Ltd"
+      },
+      {
+        "brand_name": "Azi Generic (Sun Pharma)",
+        "mrp": 52.00,
+        "pack_size": 3,
+        "manufacturer": "Sun Pharma"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "Indian Pharmacopoeia (IP) / WHO-GMP",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "High intracellular tissue penetration verified identical to originator formulation in bioavailability testing."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 26.40,
+      "generic_unit_price": 8.00,
+      "savings_percent": 69.7,
+      "annual_saving_per_daily_user": 6716.00
+    }
+  },
+  {
+    "generic_molecule_slug": "telmisartan-40mg",
+    "molecule_name": "Telmisartan Tablets IP 40mg",
+    "pmbjp_drug_code": "PMBJP00512",
+    "dosage_form": "Tablet",
+    "pack_size": 10,
+    "jan_aushadhi_mrp": 14.00,
+    "jan_aushadhi_unit_price": 1.40,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Telmisartan Generic (Torrent)",
+        "mrp": 42.00,
+        "pack_size": 10,
+        "manufacturer": "Torrent Pharma"
+      },
+      {
+        "brand_name": "Telmi Generic (Mankind)",
+        "mrp": 38.00,
+        "pack_size": 10,
+        "manufacturer": "Mankind"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "CDSCO / IP / WHO-GMP",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "Full clinical equivalence: 24-hour ambulatory blood pressure reduction matching branded Telma 40 in clinical pharmacological assays."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 9.47,
+      "generic_unit_price": 1.40,
+      "savings_percent": 85.2,
+      "annual_saving_per_daily_user": 2945.55
+    }
+  },
+  {
+    "generic_molecule_slug": "telmisartan-40mg-amlodipine-5mg",
+    "molecule_name": "Telmisartan & Amlodipine Tablets IP (40mg + 5mg)",
+    "pmbjp_drug_code": "PMBJP00518",
+    "dosage_form": "Tablet",
+    "pack_size": 10,
+    "jan_aushadhi_mrp": 22.00,
+    "jan_aushadhi_unit_price": 2.20,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Telmisartan + Amlodipine Generic (Cipla)",
+        "mrp": 72.00,
+        "pack_size": 10,
+        "manufacturer": "Cipla Generic"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "CDSCO / WHO-GMP",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "Bilayer tablet formulation matching dissolution kinetics of innovator Telma-AM."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 17.20,
+      "generic_unit_price": 2.20,
+      "savings_percent": 87.2,
+      "annual_saving_per_daily_user": 5475.00
+    }
+  },
+  {
+    "generic_molecule_slug": "metformin-500mg-glimepiride-2mg",
+    "molecule_name": "Glimepiride & Metformin Hydrochloride (PR) Tablets IP (2mg + 500mg)",
+    "pmbjp_drug_code": "PMBJP00341",
+    "dosage_form": "Tablet (PR)",
+    "pack_size": 10,
+    "jan_aushadhi_mrp": 19.50,
+    "jan_aushadhi_unit_price": 1.95,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Glimepiride + Metformin SR (Intas)",
+        "mrp": 48.00,
+        "pack_size": 10,
+        "manufacturer": "Intas Pharma"
+      },
+      {
+        "brand_name": "Glyco-G2 Generic (Mankind)",
+        "mrp": 52.00,
+        "pack_size": 10,
+        "manufacturer": "Mankind Pharma"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "Indian Pharmacopoeia (IP) / CDSCO Standards",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "Prolonged release matrix demonstrates identical glycemic control and postprandial blood glucose stabilization."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 12.13,
+      "generic_unit_price": 1.95,
+      "savings_percent": 83.9,
+      "annual_saving_per_daily_user": 3715.70
+    }
+  },
+  {
+    "generic_molecule_slug": "sitagliptin-50mg-metformin-500mg",
+    "molecule_name": "Sitagliptin Phosphate & Metformin Hydrochloride Tablets IP (50mg + 500mg)",
+    "pmbjp_drug_code": "PMBJP01450",
+    "dosage_form": "Tablet",
+    "pack_size": 10,
+    "jan_aushadhi_mrp": 48.00,
+    "jan_aushadhi_unit_price": 4.80,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Sitagliptin + Metformin Generic (Glenmark)",
+        "mrp": 120.00,
+        "pack_size": 10,
+        "manufacturer": "Glenmark"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "CDSCO / US-FDA Bioequivalence",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "Off-patent post-2022 approved generic with strict bioavailability certification."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 27.67,
+      "generic_unit_price": 4.80,
+      "savings_percent": 82.7,
+      "annual_saving_per_daily_user": 8347.55
+    }
+  },
+  {
+    "generic_molecule_slug": "atorvastatin-10mg",
+    "molecule_name": "Atorvastatin Tablets IP 10mg",
+    "pmbjp_drug_code": "PMBJP00214",
+    "dosage_form": "Tablet",
+    "pack_size": 10,
+    "jan_aushadhi_mrp": 11.00,
+    "jan_aushadhi_unit_price": 1.10,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Atorvastatin Generic 10mg (Sun Generic)",
+        "mrp": 38.00,
+        "pack_size": 10,
+        "manufacturer": "Sun Pharma"
+      },
+      {
+        "brand_name": "Atorva Generic (Cipla)",
+        "mrp": 40.00,
+        "pack_size": 10,
+        "manufacturer": "Cipla"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "Indian Pharmacopoeia (IP) / WHO-GMP",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "Comparable lipid-lowering efficacy and LDL-C reduction curve confirmed in bioequivalence testing."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 7.67,
+      "generic_unit_price": 1.10,
+      "savings_percent": 85.7,
+      "annual_saving_per_daily_user": 2398.05
+    }
+  },
+  {
+    "generic_molecule_slug": "montelukast-10mg-levocetirizine-5mg",
+    "molecule_name": "Montelukast Sodium & Levocetirizine Dihydrochloride Tablets IP (10mg + 5mg)",
+    "pmbjp_drug_code": "PMBJP00421",
+    "dosage_form": "Tablet",
+    "pack_size": 10,
+    "jan_aushadhi_mrp": 27.00,
+    "jan_aushadhi_unit_price": 2.70,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Montelukast + Levocet Generic (Mankind)",
+        "mrp": 75.00,
+        "pack_size": 10,
+        "manufacturer": "Mankind Pharma"
+      },
+      {
+        "brand_name": "Montek-LC Generic (Sun)",
+        "mrp": 82.00,
+        "pack_size": 10,
+        "manufacturer": "Sun Pharma"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "CDSCO / IP Standards",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "Identical Cmax and Tmax pharmacokinetic profile for allergic symptom suppression."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 19.80,
+      "generic_unit_price": 2.70,
+      "savings_percent": 86.4,
+      "annual_saving_per_daily_user": 6241.50
+    }
+  },
+  {
+    "generic_molecule_slug": "fexofenadine-120mg",
+    "molecule_name": "Fexofenadine Hydrochloride Tablets IP 120mg",
+    "pmbjp_drug_code": "PMBJP00628",
+    "dosage_form": "Tablet",
+    "pack_size": 10,
+    "jan_aushadhi_mrp": 38.00,
+    "jan_aushadhi_unit_price": 3.80,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Fexofenadine Generic (Dr. Reddy's)",
+        "mrp": 95.00,
+        "pack_size": 10,
+        "manufacturer": "Dr. Reddy's Laboratories"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "Indian Pharmacopoeia (IP)",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "Meets non-sedating bioavailability standards identical to Allegra 120."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 21.80,
+      "generic_unit_price": 3.80,
+      "savings_percent": 82.6,
+      "annual_saving_per_daily_user": 6570.00
+    }
+  },
+  {
+    "generic_molecule_slug": "ibuprofen-400mg-paracetamol-325mg",
+    "molecule_name": "Ibuprofen & Paracetamol Tablets IP (400mg + 325mg)",
+    "pmbjp_drug_code": "PMBJP00078",
+    "dosage_form": "Tablet",
+    "pack_size": 10,
+    "jan_aushadhi_mrp": 8.00,
+    "jan_aushadhi_unit_price": 0.80,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Ibuprofen + Paracetamol Generic (Cipla)",
+        "mrp": 18.00,
+        "pack_size": 10,
+        "manufacturer": "Cipla Generic"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "IP / CDSCO",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "Clinical bioequivalence confirmed for rapid analgesic and antipyretic relief."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 2.45,
+      "generic_unit_price": 0.80,
+      "savings_percent": 67.3,
+      "annual_saving_per_daily_user": 602.25
+    }
+  },
+  {
+    "generic_molecule_slug": "cefixime-200mg",
+    "molecule_name": "Cefixime Tablets IP 200mg",
+    "pmbjp_drug_code": "PMBJP00092",
+    "dosage_form": "Tablet",
+    "pack_size": 10,
+    "jan_aushadhi_mrp": 42.00,
+    "jan_aushadhi_unit_price": 4.20,
+    "certified_commercial_generics": [
+      {
+        "brand_name": "Cefixime Generic 200mg (Torrent Generic)",
+        "mrp": 70.00,
+        "pack_size": 10,
+        "manufacturer": "Torrent Pharma"
+      }
+    ],
+    "bioequivalence_status": {
+      "certified": true,
+      "standard": "Indian Pharmacopoeia (IP)",
+      "bioequivalent_rating": "AB-Rated Equivalent",
+      "description": "Equivalent bactericidal activity and absorption verified against originator Cephalosporin."
+    },
+    "savings_summary": {
+      "branded_avg_price_unit": 11.00,
+      "generic_unit_price": 4.20,
+      "savings_percent": 61.8,
+      "annual_saving_per_daily_user": 2482.00
+    }
+  }
+]

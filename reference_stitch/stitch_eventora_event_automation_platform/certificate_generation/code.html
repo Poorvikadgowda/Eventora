@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-container": "#316bf3", "tertiary-container": "#002f2a", "tertiary-fixed-dim": "#6bd8cb", "on-tertiary-fixed-variant": "#005049", "on-primary-fixed-variant": "#314863", "surface-container": "#eceef0", "on-surface-variant": "#43474d", "outline": "#74777e", "primary": "#00152a", "on-secondary-fixed": "#00174b", "tertiary-fixed": "#89f5e7", "surface-dim": "#d8dadc", "on-primary": "#ffffff", "on-background": "#191c1e", "surface": "#f7f9fb", "surface-bright": "#f7f9fb", "on-tertiary": "#ffffff", "on-secondary-container": "#fefcff", "secondary-fixed-dim": "#b4c5ff", "error-container": "#ffdad6", "on-secondary": "#ffffff", "inverse-surface": "#2d3133", "primary-container": "#102a43", "tertiary": "#001815", "inverse-on-surface": "#eff1f3", "surface-tint": "#49607c", "inverse-primary": "#b0c9e8", "on-tertiary-container": "#28a094", "on-tertiary-fixed": "#00201d", "surface-container-high": "#e6e8ea", "on-error-container": "#93000a", "on-secondary-fixed-variant": "#003ea8", "on-error": "#ffffff", "primary-fixed": "#d1e4ff", "on-primary-fixed": "#011d35", "primary-fixed-dim": "#b0c9e8", "background": "#f7f9fb", "surface-container-lowest": "#ffffff", "surface-container-highest": "#e0e3e5", "surface-container-low": "#f2f4f6", "secondary-fixed": "#dbe1ff", "outline-variant": "#c3c6ce", "error": "#ba1a1a", "secondary": "#0051d5", "on-surface": "#191c1e", "surface-variant": "#e0e3e5", "on-primary-container": "#7a92b0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "margin": "2rem", "space-md": "1rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem" }, "fontFamily": { "label-sm": ["Inter"], "body-md": ["Inter"], "label-md": ["Inter"], "headline-xl": ["Inter"], "label-lg": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Inter"], "body-sm": ["Inter"], "headline-sm": ["Inter"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }] } } } }</script><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></head><body class="bg-surface font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col pt-space-xl pb-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="px-space-lg mb-space-xl flex items-center gap-space-md"><img alt="Eventora Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEhICH3M45UYZ5jPj-vC2vEEwK5mwaytNcwqqrcBLHuHgtK1zQBA2HRDgnQDZ1bMexVRDBqeRp8NVKqJzgmW2MiBVF3HaI9z4n0JnSytcNTvFI89cKkWVsAfmypLknX8YcJIrciLiH5ZYvhr2S6AA4sKmVkKTxnIoisq3GwxKQnYWEVUVQ0q3YblmIvbyfmEvAbTiY_JJG50S7VDtKtfWdpijdo-xkdad7aGFQ2v7s"/><span class="font-headline-md text-primary font-bold tracking-tight">Eventora</span></div><nav class="flex-1 px-space-md space-y-space-xs overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-bold"><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="home" href="#"><span class="material-symbols-outlined mr-space-md">home</span>Home</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="explore-events" href="#"><span class="material-symbols-outlined mr-space-md">explore</span>Explore Events</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="student-dashboard" href="#"><span class="material-symbols-outlined mr-space-md">dashboard</span>Student Dashboard</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="admin-analytics" href="#"><span class="material-symbols-outlined mr-space-md">analytics</span>Admin Analytics</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="qr-attendance-scanner" href="#"><span class="material-symbols-outlined mr-space-md">qr_code_scanner</span>QR Attendance Scanner</a><a aria-current="page" class="flex items-center px-space-md py-space-sm rounded-xl transition-all bg-primary-container text-on-primary-container font-bold" data-path="certificate-generation" href="#"><span class="material-symbols-outlined mr-space-md">workspace_premium</span>Certificate Generation</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="feedback-and-reviews" href="#"><span class="material-symbols-outlined mr-space-md">rate_review</span>Feedback &amp; Reviews</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="certificates" href="#"><span class="material-symbols-outlined mr-space-md">card_membership</span>Certificates</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="notifications" href="#"><span class="material-symbols-outlined mr-space-md">notifications</span>Notifications</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="profile" href="#"><span class="material-symbols-outlined mr-space-md">person</span>Profile</a></nav></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="flex items-center bg-surface-container-low px-space-md py-space-xs rounded-xl w-96 gap-space-sm"><span class="material-symbols-outlined text-outline text-[20px]">search</span><input class="bg-transparent border-none outline-none text-body-md text-on-surface w-full" placeholder="Search events, certificates, users..." type="text"/></div><div class="flex items-center gap-space-md"><button class="w-10 h-10 rounded-full hover:bg-surface-container-high flex items-center justify-center transition-colors relative"><span class="material-symbols-outlined text-on-surface-variant">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 bg-surface min-h-screen p-space-xl"><div class="flex flex-col w-full">
+<!-- Top Bar / Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-space-xl gap-space-md">
+<div>
+<span class="font-label-md uppercase tracking-wider text-primary-fixed-dim bg-primary-container px-space-sm py-space-xs rounded-full inline-block mb-space-xs">Credential Studio</span>
+<h1 class="font-headline-xl text-on-surface">Certificate Generation &amp; Vault</h1>
+<p class="font-body-md text-on-surface-variant">Manage, issue, and verify professional credentials with cryptographic signatures.</p>
+</div>
+<!-- Mode Toggle: Individual Preview vs Batch Generation -->
+<div class="flex items-center bg-surface-container-high p-space-xs rounded-xl self-start md:self-auto">
+<button class="px-space-md py-space-sm rounded-lg font-label-md transition-all bg-surface-container-lowest text-on-surface shadow-sm flex items-center gap-space-xs" id="preview-mode-btn" onclick="switchMode('preview')">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+        Certificate Preview
+      </button>
+<button class="px-space-md py-space-sm rounded-lg font-label-md transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-space-xs" id="batch-mode-btn" onclick="switchMode('batch')">
+<span class="material-symbols-outlined text-[18px]">group</span>
+        Batch Generator
+      </button>
+</div>
+</div>
+<!-- VIEW 1: PREVIEW & ISSUED CERTIFICATE WORKSPACE -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start" id="preview-workspace">
+<!-- Left Column: Certificate Visual Preview & Actions -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Certificate Display Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-xl shadow-[0_12px_32px_-4px_rgba(16,42,67,0.08)] relative overflow-hidden flex flex-col justify-between border-t-4 border-secondary-container">
+<!-- Background decorative watermark -->
+<div class="absolute -right-16 -bottom-16 w-80 h-80 rounded-full bg-surface-container-low/50 pointer-events-none flex items-center justify-center">
+<span class="material-symbols-outlined text-[200px] text-outline-variant/10">workspace_premium</span>
+</div>
+<!-- Certificate Header -->
+<div class="flex justify-between items-start mb-space-xl relative z-10">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[28px]">event</span>
+</div>
+<div>
+<span class="font-headline-sm text-primary tracking-wide">EVENTORA GLOBAL</span>
+<p class="font-label-sm text-on-surface-variant tracking-widest uppercase">Verified Credential Authority</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-outline block">VERIFICATION ID</span>
+<span class="font-mono text-sm font-bold text-secondary">CERT-894201-ET25</span>
+</div>
+</div>
+<!-- Certificate Body -->
+<div class="text-center py-space-xl relative z-10 my-space-md">
+<span class="font-label-md uppercase tracking-widest text-on-surface-variant block mb-space-sm">This is proudly presented to</span>
+<h2 class="font-headline-xl text-primary mb-space-md tracking-tight font-serif italic text-4xl">Alexander Wright</h2>
+<p class="font-body-md text-on-surface-variant max-w-lg mx-auto mb-space-lg">
+            For successfully completing and actively participating in the premier technology conference <strong class="text-on-surface font-semibold">Tech Summit 2025</strong>, demonstrating exceptional engagement in AI architectures and enterprise scalability.
+          </p>
+<div class="inline-flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-xs rounded-full">
+<span class="material-symbols-outlined text-secondary text-[16px]">calendar_today</span>
+<span class="font-label-sm text-on-surface">Issued on October 24, 2025</span>
+</div>
+</div>
+<!-- Certificate Footer / Signatures & QR -->
+<div class="grid grid-cols-3 items-end pt-space-xl border-t border-surface-container-high relative z-10">
+<div>
+<div class="font-serif italic text-lg text-primary font-bold">Dr. Eleanor Vance</div>
+<div class="w-32 h-[1px] bg-outline-variant my-space-xs"></div>
+<span class="font-label-sm text-on-surface-variant">Chief Academic Officer</span>
+</div>
+<div class="flex justify-center">
+<!-- Simulated QR Code box -->
+<div class="w-20 h-20 bg-surface-container-high rounded-lg p-space-xs flex flex-col items-center justify-center border border-outline-variant/30 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[36px]">qr_code_2</span>
+<span class="text-[9px] font-mono text-outline uppercase tracking-tighter">Scan to Verify</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-serif italic text-lg text-primary font-bold">Marcus Sterling</div>
+<div class="w-32 h-[1px] bg-outline-variant my-space-xs ml-auto"></div>
+<span class="font-label-sm text-on-surface-variant">Event Director, ET25</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons Bar -->
+<div class="flex flex-wrap items-center gap-space-md">
+<button class="flex-1 bg-secondary hover:bg-on-secondary-fixed-variant text-on-secondary font-label-lg px-space-lg py-space-md rounded-xl transition-all shadow-md flex items-center justify-center gap-space-sm" onclick="triggerAction('Download PDF')">
+<span class="material-symbols-outlined">download</span>
+          Download PDF
+        </button>
+<button class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-lg px-space-lg py-space-md rounded-xl transition-all flex items-center justify-center gap-space-sm" onclick="triggerAction('Share Certificate')">
+<span class="material-symbols-outlined">share</span>
+          Share Certificate
+        </button>
+<button class="bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label-lg px-space-lg py-space-md rounded-xl transition-all flex items-center justify-center gap-space-sm" onclick="triggerAction('Verify Credential')">
+<span class="material-symbols-outlined">verified</span>
+          Verify Credential
+        </button>
+<button class="bg-[#0a66c2] hover:bg-[#095196] text-white font-label-lg px-space-lg py-space-md rounded-xl transition-all flex items-center justify-center gap-space-sm" onclick="triggerAction('Add to LinkedIn')">
+<span class="material-symbols-outlined">work</span>
+          Add to LinkedIn
+        </button>
+</div>
+</div>
+<!-- Right Column: Verification Meta & Customizer Panel -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Verification Badge status card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center gap-space-md mb-space-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-on-surface">Cryptographic Proof</h3>
+<span class="font-label-sm text-on-tertiary-container font-semibold">Active &amp; Secured on Ledger</span>
+</div>
+</div>
+<p class="font-body-sm text-on-surface-variant mb-space-md">
+          This document is cryptographically signed and verifiable globally. Anyone scanning the QR code will instantly receive validation proof.
+        </p>
+<div class="bg-surface-container-low p-space-md rounded-lg flex items-center justify-between">
+<span class="font-mono text-xs text-on-surface">SHA-256: e3b0c442...86f1</span>
+<button class="text-secondary hover:text-on-secondary-fixed-variant text-xs font-label-md flex items-center gap-space-xs" onclick="copyHash()">
+<span class="material-symbols-outlined text-[16px]">content_copy</span> Copy
+          </button>
+</div>
+</div>
+<!-- Quick Template Settings -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+<h3 class="font-headline-sm text-on-surface">Template Parameters</h3>
+<div>
+<label class="font-label-sm text-on-surface-variant block mb-space-xs">Select Event Context</label>
+<select class="w-full bg-surface-container-low text-on-surface px-space-md py-space-sm rounded-lg border-none outline-none font-body-md">
+<option>Tech Summit 2025 (Global)</option>
+<option>Annual Tech Symposium 2024</option>
+<option>AI Executive Masterclass</option>
+</select>
+</div>
+<div>
+<label class="font-label-sm text-on-surface-variant block mb-space-xs">Participant Name</label>
+<input class="w-full bg-surface-container-low text-on-surface px-space-md py-space-sm rounded-lg border-none outline-none font-body-md" type="text" value="Alexander Wright"/>
+</div>
+<div>
+<label class="font-label-sm text-on-surface-variant block mb-space-xs">Credential Theme</label>
+<div class="grid grid-cols-3 gap-space-sm">
+<button class="h-10 rounded-lg bg-primary border-2 border-secondary flex items-center justify-center text-on-primary font-label-sm">Navy</button>
+<button class="h-10 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm">Emerald</button>
+<button class="h-10 rounded-lg bg-surface-container-high text-on-surface flex items-center justify-center font-label-sm">Slate</button>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary font-label-lg py-space-md rounded-lg transition-all mt-space-sm">
+          Update Preview
+        </button>
+</div>
+</div>
+</div>
+<!-- VIEW 2: BATCH GENERATION WORKSPACE (Hidden by default) -->
+<div class="hidden flex flex-col gap-space-xl" id="batch-workspace">
+<div class="bg-surface-container-lowest rounded-xl p-space-xl shadow-sm">
+<div class="max-w-2xl mb-space-xl">
+<h2 class="font-headline-md text-primary mb-space-xs">Automated Batch Issuer</h2>
+<p class="font-body-md text-on-surface-variant">Upload a CSV containing participant names and emails to automatically generate, sign, and email hundreds of certificates in seconds.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-xl">
+<!-- Upload Box -->
+<div class="border-2 border-dashed border-outline-variant/60 rounded-xl p-space-xl flex flex-col items-center justify-center text-center hover:bg-surface-container-low/50 transition-all cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed mb-space-md">
+<span class="material-symbols-outlined text-[32px]">upload_file</span>
+</div>
+<h4 class="font-headline-sm text-on-surface mb-space-xs">Drop your CSV or Excel file here</h4>
+<p class="font-body-sm text-on-surface-variant mb-space-lg">Supports columns: Full Name, Email, Event ID, Score</p>
+<button class="bg-surface-container-high text-on-surface font-label-md px-space-lg py-space-sm rounded-lg hover:bg-surface-container-highest transition-all">
+            Browse Files
+          </button>
+</div>
+<!-- Configuration & Trigger -->
+<div class="flex flex-col justify-between">
+<div class="space-y-space-md">
+<h4 class="font-headline-sm text-on-surface">Batch Settings</h4>
+<div>
+<label class="font-label-sm text-on-surface-variant block mb-space-xs">Notification Dispatch</label>
+<div class="flex items-center gap-space-md">
+<label class="flex items-center gap-space-xs font-body-md text-on-surface cursor-pointer">
+<input checked="" class="rounded text-secondary w-4 h-4" type="checkbox"/> Email certificates instantly
+                </label>
+</div>
+</div>
+<div>
+<label class="font-label-sm text-on-surface-variant block mb-space-xs">Issuer Signature</label>
+<select class="w-full bg-surface-container-low text-on-surface px-space-md py-space-sm rounded-lg border-none outline-none font-body-md">
+<option>Dr. Eleanor Vance (Chief Academic Officer)</option>
+<option>Marcus Sterling (Event Director)</option>
+</select>
+</div>
+</div>
+<button class="w-full bg-secondary hover:bg-on-secondary-fixed-variant text-on-secondary font-label-lg py-space-md rounded-xl transition-all shadow-md flex items-center justify-center gap-space-sm mt-space-xl" onclick="alert('Batch generation job started successfully! 450 certificates are being processed.')">
+<span class="material-symbols-outlined">bolt</span>
+            Generate &amp; Issue 450 Certificates
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- PREVIOUSLY EARNED / ISSUED CERTIFICATES VAULT -->
+<div class="mt-space-xl flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div>
+<h2 class="font-headline-md text-primary">Certificate Vault</h2>
+<p class="font-body-md text-on-surface-variant">History of all earned and generated credentials across Eventora.</p>
+</div>
+<!-- Filters -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="flex items-center bg-surface-container-lowest px-space-md py-space-xs rounded-xl shadow-sm">
+<span class="material-symbols-outlined text-outline text-[18px] mr-space-xs">filter_list</span>
+<select class="bg-transparent border-none outline-none font-label-md text-on-surface">
+<option>All Categories</option>
+<option>Tech &amp; AI</option>
+<option>Leadership</option>
+<option>Design Systems</option>
+</select>
+</div>
+<div class="flex items-center bg-surface-container-lowest px-space-md py-space-xs rounded-xl shadow-sm">
+<span class="material-symbols-outlined text-outline text-[18px] mr-space-xs">calendar_month</span>
+<select class="bg-transparent border-none outline-none font-label-md text-on-surface">
+<option>All Time</option>
+<option>2025</option>
+<option>2024</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Certificates Table / Grid -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50 text-on-surface-variant font-label-md border-b border-surface-container-high">
+<th class="p-space-md font-medium">Event Title</th>
+<th class="p-space-md font-medium">Credential ID</th>
+<th class="p-space-md font-medium">Issue Date</th>
+<th class="p-space-md font-medium">Status</th>
+<th class="p-space-md font-medium text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high font-body-md">
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="p-space-md font-semibold text-primary flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-[16px]">code</span>
+</div>
+                Tech Summit 2025
+              </td>
+<td class="p-space-md font-mono text-xs text-on-surface-variant">CERT-894201-ET25</td>
+<td class="p-space-md text-on-surface-variant">Oct 24, 2025</td>
+<td class="p-space-md">
+<span class="inline-flex items-center gap-space-xs bg-tertiary-fixed text-on-tertiary-fixed font-label-sm px-space-sm py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">verified</span> Verified
+                </span>
+</td>
+<td class="p-space-md text-right">
+<button class="text-secondary hover:text-on-secondary-fixed-variant font-label-md inline-flex items-center gap-space-xs bg-surface-container-low px-space-md py-space-xs rounded-lg transition-colors" onclick="triggerAction('Download PDF')">
+<span class="material-symbols-outlined text-[16px]">download</span> PDF
+                </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="p-space-md font-semibold text-primary flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+</div>
+                AI Executive Masterclass
+              </td>
+<td class="p-space-md font-mono text-xs text-on-surface-variant">CERT-541290-AI24</td>
+<td class="p-space-md text-on-surface-variant">Nov 12, 2024</td>
+<td class="p-space-md">
+<span class="inline-flex items-center gap-space-xs bg-tertiary-fixed text-on-tertiary-fixed font-label-sm px-space-sm py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">verified</span> Verified
+                </span>
+</td>
+<td class="p-space-md text-right">
+<button class="text-secondary hover:text-on-secondary-fixed-variant font-label-md inline-flex items-center gap-space-xs bg-surface-container-low px-space-md py-space-xs rounded-lg transition-colors" onclick="triggerAction('Download PDF')">
+<span class="material-symbols-outlined text-[16px]">download</span> PDF
+                </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="p-space-md font-semibold text-primary flex items-center gap-space-md">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[16px]">hub</span>
+</div>
+                Cloud Architects Forum
+              </td>
+<td class="p-space-md font-mono text-xs text-on-surface-variant">CERT-109244-CAF</td>
+<td class="p-space-md text-on-surface-variant">Jan 15, 2025</td>
+<td class="p-space-md">
+<span class="inline-flex items-center gap-space-xs bg-secondary-fixed text-on-secondary-fixed font-label-sm px-space-sm py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Available
+                </span>
+</td>
+<td class="p-space-md text-right">
+<button class="text-secondary hover:text-on-secondary-fixed-variant font-label-md inline-flex items-center gap-space-xs bg-surface-container-low px-space-md py-space-xs rounded-lg transition-colors" onclick="triggerAction('Download PDF')">
+<span class="material-symbols-outlined text-[16px]">download</span> PDF
+                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<script>
+    function switchMode(mode) {
+      const previewWorkspace = document.getElementById('preview-workspace');
+      const batchWorkspace = document.getElementById('batch-workspace');
+      const previewBtn = document.getElementById('preview-mode-btn');
+      const batchBtn = document.getElementById('batch-mode-btn');
+
+      if (mode === 'preview') {
+        previewWorkspace.classList.remove('hidden');
+        batchWorkspace.classList.add('hidden');
+        previewBtn.className = "px-space-md py-space-sm rounded-lg font-label-md transition-all bg-surface-container-lowest text-on-surface shadow-sm flex items-center gap-space-xs";
+        batchBtn.className = "px-space-md py-space-sm rounded-lg font-label-md transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-space-xs";
+      } else {
+        previewWorkspace.classList.add('hidden');
+        batchWorkspace.classList.remove('hidden');
+        batchBtn.className = "px-space-md py-space-sm rounded-lg font-label-md transition-all bg-surface-container-lowest text-on-surface shadow-sm flex items-center gap-space-xs";
+        previewBtn.className = "px-space-md py-space-sm rounded-lg font-label-md transition-all text-on-surface-variant hover:text-on-surface flex items-center gap-space-xs";
+      }
+    }
+
+    function triggerAction(actionName) {
+      alert("Action triggered: " + actionName + " for credential CERT-894201-ET25");
+    }
+
+    function copyHash() {
+      navigator.clipboard.writeText("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855");
+      alert("Cryptographic hash copied to clipboard!");
+    }
+  </script>
+</div></main></div></body></html>

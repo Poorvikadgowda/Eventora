@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-container": "#316bf3", "tertiary-container": "#002f2a", "tertiary-fixed-dim": "#6bd8cb", "on-tertiary-fixed-variant": "#005049", "on-primary-fixed-variant": "#314863", "surface-container": "#eceef0", "on-surface-variant": "#43474d", "outline": "#74777e", "primary": "#00152a", "on-secondary-fixed": "#00174b", "tertiary-fixed": "#89f5e7", "surface-dim": "#d8dadc", "on-primary": "#ffffff", "on-background": "#191c1e", "surface": "#f7f9fb", "surface-bright": "#f7f9fb", "on-tertiary": "#ffffff", "on-secondary-container": "#fefcff", "secondary-fixed-dim": "#b4c5ff", "error-container": "#ffdad6", "on-secondary": "#ffffff", "inverse-surface": "#2d3133", "primary-container": "#102a43", "tertiary": "#001815", "inverse-on-surface": "#eff1f3", "surface-tint": "#49607c", "inverse-primary": "#b0c9e8", "on-tertiary-container": "#28a094", "on-tertiary-fixed": "#00201d", "surface-container-high": "#e6e8ea", "on-error-container": "#93000a", "on-secondary-fixed-variant": "#003ea8", "on-error": "#ffffff", "primary-fixed": "#d1e4ff", "on-primary-fixed": "#011d35", "primary-fixed-dim": "#b0c9e8", "background": "#f7f9fb", "surface-container-lowest": "#ffffff", "surface-container-highest": "#e0e3e5", "surface-container-low": "#f2f4f6", "secondary-fixed": "#dbe1ff", "outline-variant": "#c3c6ce", "error": "#ba1a1a", "secondary": "#0051d5", "on-surface": "#191c1e", "surface-variant": "#e0e3e5", "on-primary-container": "#7a92b0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "margin": "2rem", "space-md": "1rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem" }, "fontFamily": { "label-sm": ["Inter"], "body-md": ["Inter"], "label-md": ["Inter"], "headline-xl": ["Inter"], "label-lg": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Inter"], "body-sm": ["Inter"], "headline-sm": ["Inter"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }] } } } }</script><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></head><body class="bg-surface font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col pt-space-xl pb-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="px-space-lg mb-space-xl flex items-center gap-space-md"><img alt="Eventora Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEhICH3M45UYZ5jPj-vC2vEEwK5mwaytNcwqqrcBLHuHgtK1zQBA2HRDgnQDZ1bMexVRDBqeRp8NVKqJzgmW2MiBVF3HaI9z4n0JnSytcNTvFI89cKkWVsAfmypLknX8YcJIrciLiH5ZYvhr2S6AA4sKmVkKTxnIoisq3GwxKQnYWEVUVQ0q3YblmIvbyfmEvAbTiY_JJG50S7VDtKtfWdpijdo-xkdad7aGFQ2v7s"/><span class="font-headline-md text-primary font-bold tracking-tight">Eventora</span></div><nav class="flex-1 px-space-md space-y-space-xs overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-bold"><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="home" href="#"><span class="material-symbols-outlined mr-space-md">home</span>Home</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="explore-events" href="#"><span class="material-symbols-outlined mr-space-md">explore</span>Explore Events</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="student-dashboard" href="#"><span class="material-symbols-outlined mr-space-md">dashboard</span>Student Dashboard</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="admin-analytics" href="#"><span class="material-symbols-outlined mr-space-md">analytics</span>Admin Analytics</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="qr-attendance-scanner" href="#"><span class="material-symbols-outlined mr-space-md">qr_code_scanner</span>QR Attendance Scanner</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="certificate-generation" href="#"><span class="material-symbols-outlined mr-space-md">workspace_premium</span>Certificate Generation</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="feedback-and-reviews" href="#"><span class="material-symbols-outlined mr-space-md">rate_review</span>Feedback &amp; Reviews</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="certificates" href="#"><span class="material-symbols-outlined mr-space-md">card_membership</span>Certificates</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="notifications" href="#"><span class="material-symbols-outlined mr-space-md">notifications</span>Notifications</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="profile" href="#"><span class="material-symbols-outlined mr-space-md">person</span>Profile</a></nav></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="flex items-center bg-surface-container-low px-space-md py-space-xs rounded-xl w-96 gap-space-sm"><span class="material-symbols-outlined text-outline text-[20px]">search</span><input class="bg-transparent border-none outline-none text-body-md text-on-surface w-full" placeholder="Search events, certificates, users..." type="text"/></div><div class="flex items-center gap-space-md"><button class="w-10 h-10 rounded-full hover:bg-surface-container-high flex items-center justify-center transition-colors relative"><span class="material-symbols-outlined text-on-surface-variant">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 bg-surface min-h-screen p-space-xl"><div class="flex flex-col w-full pb-20">
+<!-- Top Banner / Editorial Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-xl gap-space-md">
+<div>
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="px-space-sm py-0.5 rounded-full bg-primary-container text-on-primary-container text-label-sm uppercase tracking-wider">Participant Voice</span>
+<span class="text-outline text-body-sm">• Real-time Analytics &amp; Reviews</span>
+</div>
+<h1 class="font-headline-xl text-primary">Feedback &amp; Reviews</h1>
+<p class="text-on-surface-variant text-body-lg mt-1 max-w-2xl">Help organizers elevate future experiences by sharing structured ratings, constructive suggestions, and public testimonials.</p>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="bg-surface-container-low px-space-md py-space-sm rounded-xl flex items-center gap-space-md shadow-sm">
+<span class="material-symbols-outlined text-secondary">verified</span>
+<div>
+<div class="text-label-sm text-outline">Verified Submissions</div>
+<div class="font-headline-sm text-primary">94.2% Rate</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Satisfaction Metrics Overview (Bento Grid Top Tier) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg mb-space-xl">
+<!-- Main Score Card -->
+<div class="lg:col-span-4 bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-2xl -mr-10 -mt-10 pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-label-md uppercase tracking-wider text-outline font-bold">Overall Satisfaction</span>
+<span class="text-tertiary-container bg-tertiary-fixed/30 px-space-sm py-0.5 rounded-full text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +0.4 vs last month
+          </span>
+</div>
+<div class="flex items-baseline gap-space-sm mb-space-sm">
+<span class="font-headline-xl text-primary text-5xl">4.8</span>
+<span class="text-on-surface-variant text-body-lg font-medium">/ 5.0</span>
+</div>
+<div class="flex items-center gap-1 text-amber-500 mb-space-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star_half</span>
+<span class="text-on-surface-variant text-body-sm ml-2 font-medium">(1,428 reviews)</span>
+</div>
+</div>
+<div class="pt-space-md border-t border-surface-container-high flex items-center justify-between text-body-sm text-on-surface-variant">
+<span>Net Promoter Score (NPS)</span>
+<span class="font-bold text-primary bg-primary-fixed px-space-sm py-0.5 rounded">+78 (Excellent)</span>
+</div>
+</div>
+<!-- Breakdown Bars Card -->
+<div class="lg:col-span-8 bg-surface-container-low rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-label-md uppercase tracking-wider text-outline font-bold">Category Breakdown</span>
+<span class="text-body-sm text-on-surface-variant">Based on 4 active enterprise events</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-space-xl gap-y-space-md">
+<!-- Category 1 -->
+<div>
+<div class="flex justify-between text-body-sm font-medium mb-1">
+<span class="text-on-surface">Event Organization</span>
+<span class="text-primary font-bold">4.9 / 5.0</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 98%;"></div>
+</div>
+</div>
+<!-- Category 2 -->
+<div>
+<div class="flex justify-between text-body-sm font-medium mb-1">
+<span class="text-on-surface">Speaker Quality</span>
+<span class="text-primary font-bold">4.7 / 5.0</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 94%;"></div>
+</div>
+</div>
+<!-- Category 3 -->
+<div>
+<div class="flex justify-between text-body-sm font-medium mb-1">
+<span class="text-on-surface">Venue &amp; Facilities</span>
+<span class="text-primary font-bold">4.6 / 5.0</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 92%;"></div>
+</div>
+</div>
+<!-- Category 4 -->
+<div>
+<div class="flex justify-between text-body-sm font-medium mb-1">
+<span class="text-on-surface">Networking Opportunities</span>
+<span class="text-primary font-bold">4.9 / 5.0</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 98%;"></div>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-md border-t border-surface-container-high flex items-center justify-between text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-secondary text-[16px]">info</span> All metrics verified via post-event cryptographic tokens.</span>
+<button class="text-secondary font-medium hover:underline flex items-center gap-1">Export Analytics <span class="material-symbols-outlined text-[16px]">download</span></button>
+</div>
+</div>
+</div>
+<!-- Main Split Layout: Interactive Submission Form & Submitted History -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+<!-- Feedback Submission Form (Left 7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container-low rounded-xl p-space-xl shadow-sm">
+<div class="flex items-center justify-between mb-space-lg">
+<div>
+<h2 class="font-headline-md text-primary">Submit Event Feedback</h2>
+<p class="text-body-sm text-on-surface-variant">Select an attended event and rate your overall experience.</p>
+</div>
+<span class="material-symbols-outlined text-outline text-[28px]">rate_review</span>
+</div>
+<form class="space-y-space-lg" id="feedbackForm" onsubmit="event.preventDefault(); alert('Feedback submitted successfully!');">
+<!-- Event Selector -->
+<div>
+<label class="block text-body-sm font-medium text-on-surface mb-1">Select Attended Event</label>
+<div class="relative">
+<select class="w-full bg-surface-container-highest/60 border-none outline-none rounded-lg px-space-md py-3 text-body-md text-on-surface appearance-none focus:ring-2 focus:ring-secondary/50">
+<option>Global Innovators Summit 2025 (Attended Mar 12)</option>
+<option>AI &amp; Future of Work Workshop (Attended Feb 28)</option>
+<option>Cloud Architecture Masterclass (Attended Feb 15)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3.5 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Star Rating Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-lg bg-surface/60 p-space-lg rounded-xl">
+<!-- Rating 1 -->
+<div>
+<label class="block text-label-md font-medium text-on-surface mb-1">Event Organization</label>
+<div class="flex items-center gap-1 text-amber-500 interactive-stars" data-category="org">
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 1)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 2)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 3)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 4)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 5)" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<!-- Rating 2 -->
+<div>
+<label class="block text-label-md font-medium text-on-surface mb-1">Speaker Quality</label>
+<div class="flex items-center gap-1 text-amber-500 interactive-stars" data-category="speaker">
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 1)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 2)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 3)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 4)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 5)" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<!-- Rating 3 -->
+<div>
+<label class="block text-label-md font-medium text-on-surface mb-1">Venue &amp; Facilities</label>
+<div class="flex items-center gap-1 text-amber-500 interactive-stars" data-category="venue">
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 1)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 2)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 3)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 4)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 5)" style="font-variation-settings: 'FILL' 0;">star</span>
+</div>
+</div>
+<!-- Rating 4 -->
+<div>
+<label class="block text-label-md font-medium text-on-surface mb-1">Overall Satisfaction</label>
+<div class="flex items-center gap-1 text-amber-500 interactive-stars" data-category="overall">
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 1)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 2)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 3)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 4)" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined cursor-pointer hover:scale-110 transition-transform" onclick="setRating(this, 5)" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+</div>
+<!-- Constructive Suggestions / Testimonial -->
+<div>
+<label class="block text-body-sm font-medium text-on-surface mb-1">Constructive Suggestions &amp; Testimonials</label>
+<textarea class="w-full bg-surface-container-highest/60 border-none outline-none rounded-lg p-space-md text-body-md text-on-surface resize-none focus:ring-2 focus:ring-secondary/50" placeholder="Tell us what went exceptionally well or what we can refine for the next iteration..." rows="4"></textarea>
+<span class="text-label-sm text-outline mt-1 block">Your feedback will be featured anonymously if shared as a public testimonial.</span>
+</div>
+<!-- Checkbox option -->
+<div class="flex items-center gap-space-sm">
+<input class="w-4 h-4 rounded text-secondary focus:ring-secondary" id="publicTestimonial" type="checkbox"/>
+<label class="text-body-sm text-on-surface-variant cursor-pointer" for="publicTestimonial">Allow Eventora to publish this as a verified public testimonial.</label>
+</div>
+<!-- Submit Button -->
+<div class="flex justify-end pt-space-sm">
+<button class="bg-secondary hover:bg-secondary-container text-on-secondary px-space-xl py-3 rounded-lg font-label-lg transition-all flex items-center gap-space-sm shadow-md" type="submit">
+<span class="material-symbols-outlined">send</span> Submit Review
+          </button>
+</div>
+</form>
+</div>
+<!-- Submitted Feedback History & Admin Replies (Right 5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<div class="bg-surface-container-low rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<h3 class="font-headline-sm text-primary">Your Recent Reviews</h3>
+<span class="text-label-sm text-outline">3 submissions</span>
+</div>
+<div class="space-y-space-md">
+<!-- Item 1 -->
+<div class="bg-surface p-space-md rounded-xl transition-all">
+<div class="flex items-start justify-between mb-2">
+<div>
+<h4 class="font-bold text-body-md text-primary">Global Innovators Summit 2025</h4>
+<div class="text-label-sm text-outline">Submitted March 13, 2025</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-bold bg-tertiary-fixed/30 text-tertiary-container">Published</span>
+</div>
+<div class="flex items-center gap-1 text-amber-500 mb-2">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-surface-variant text-body-sm ml-1 font-medium">5.0 Overall</span>
+</div>
+<p class="text-body-sm text-on-surface-variant italic mb-space-md">"The networking lounge setup was incredible. Speakers were exceptionally well-prepared."</p>
+<!-- Admin Reply Highlight -->
+<div class="bg-surface-container-high/60 p-space-sm rounded-lg border-l-4 border-secondary">
+<div class="flex items-center justify-between text-label-sm text-primary font-bold mb-0.5">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-secondary">support_agent</span> Organizer Reply</span>
+<span class="text-outline font-normal">Mar 14</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">Thank you so much for the kind words! We've noted your feedback regarding the coffee stations and will expand them next year.</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-surface p-space-md rounded-xl transition-all">
+<div class="flex items-start justify-between mb-2">
+<div>
+<h4 class="font-bold text-body-md text-primary">AI &amp; Future of Work Workshop</h4>
+<div class="text-label-sm text-outline">Submitted March 1, 2025</div>
+</div>
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-bold bg-secondary-fixed/50 text-on-secondary-fixed">Under Review</span>
+</div>
+<div class="flex items-center gap-1 text-amber-500 mb-2">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 0;">star</span>
+<span class="text-on-surface-variant text-body-sm ml-1 font-medium">4.0 Overall</span>
+</div>
+<p class="text-body-sm text-on-surface-variant italic">"Great content overall, but the workshop room felt a bit crowded during the afternoon Q&amp;A session."</p>
+</div>
+</div>
+</div>
+<!-- Quick Tip Card -->
+<div class="bg-primary-container text-on-primary-container rounded-xl p-space-lg flex items-start gap-space-md">
+<span class="material-symbols-outlined text-secondary-container text-[28px]">lightbulb</span>
+<div>
+<h4 class="font-bold text-body-md mb-1 text-on-primary">Did you know?</h4>
+<p class="text-body-sm text-on-primary-container leading-relaxed">Providing constructive suggestions rewards your profile with verified contributor badges, giving you early access to future keynote registrations.</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+    function setRating(element, count) {
+      const parent = element.parentElement;
+      const stars = parent.querySelectorAll('.material-symbols-outlined');
+      stars.forEach((star, index) => {
+        if (index < count) {
+          star.style.fontVariationSettings = "'FILL' 1";
+          star.classList.add('text-amber-500');
+        } else {
+          star.style.fontVariationSettings = "'FILL' 0";
+          star.classList.remove('text-amber-500');
+        }
+      });
+    }
+  </script>
+</div></main></div></body></html>

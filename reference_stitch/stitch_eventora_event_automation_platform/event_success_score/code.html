@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-container": "#316bf3", "tertiary-container": "#002f2a", "tertiary-fixed-dim": "#6bd8cb", "on-tertiary-fixed-variant": "#005049", "on-primary-fixed-variant": "#314863", "surface-container": "#eceef0", "on-surface-variant": "#43474d", "outline": "#74777e", "primary": "#00152a", "on-secondary-fixed": "#00174b", "tertiary-fixed": "#89f5e7", "surface-dim": "#d8dadc", "on-primary": "#ffffff", "on-background": "#191c1e", "surface": "#f7f9fb", "surface-bright": "#f7f9fb", "on-tertiary": "#ffffff", "on-secondary-container": "#fefcff", "secondary-fixed-dim": "#b4c5ff", "error-container": "#ffdad6", "on-secondary": "#ffffff", "inverse-surface": "#2d3133", "primary-container": "#102a43", "tertiary": "#001815", "inverse-on-surface": "#eff1f3", "surface-tint": "#49607c", "inverse-primary": "#b0c9e8", "on-tertiary-container": "#28a094", "on-tertiary-fixed": "#00201d", "surface-container-high": "#e6e8ea", "on-error-container": "#93000a", "on-secondary-fixed-variant": "#003ea8", "on-error": "#ffffff", "primary-fixed": "#d1e4ff", "on-primary-fixed": "#011d35", "primary-fixed-dim": "#b0c9e8", "background": "#f7f9fb", "surface-container-lowest": "#ffffff", "surface-container-highest": "#e0e3e5", "surface-container-low": "#f2f4f6", "secondary-fixed": "#dbe1ff", "outline-variant": "#c3c6ce", "error": "#ba1a1a", "secondary": "#0051d5", "on-surface": "#191c1e", "surface-variant": "#e0e3e5", "on-primary-container": "#7a92b0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "margin": "2rem", "space-md": "1rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem" }, "fontFamily": { "label-sm": ["Inter"], "body-md": ["Inter"], "label-md": ["Inter"], "headline-xl": ["Inter"], "label-lg": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Inter"], "body-sm": ["Inter"], "headline-sm": ["Inter"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }] } } } }</script><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/></head><body class="bg-surface font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col pt-space-xl pb-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="px-space-lg mb-space-xl flex items-center gap-space-md"><img alt="Eventora Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEhICH3M45UYZ5jPj-vC2vEEwK5mwaytNcwqqrcBLHuHgtK1zQBA2HRDgnQDZ1bMexVRDBqeRp8NVKqJzgmW2MiBVF3HaI9z4n0JnSytcNTvFI89cKkWVsAfmypLknX8YcJIrciLiH5ZYvhr2S6AA4sKmVkKTxnIoisq3GwxKQnYWEVUVQ0q3YblmIvbyfmEvAbTiY_JJG50S7VDtKtfWdpijdo-xkdad7aGFQ2v7s"/><span class="font-headline-md text-primary font-bold tracking-tight">Eventora</span></div><nav class="flex-1 px-space-md space-y-space-xs overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-bold"><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="home" href="#"><span class="material-symbols-outlined mr-space-md">home</span>Home</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="explore-events" href="#"><span class="material-symbols-outlined mr-space-md">explore</span>Explore Events</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="student-dashboard" href="#"><span class="material-symbols-outlined mr-space-md">dashboard</span>Student Dashboard</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="admin-analytics" href="#"><span class="material-symbols-outlined mr-space-md">analytics</span>Admin Analytics</a><a aria-current="page" class="flex items-center px-space-md py-space-sm rounded-xl transition-all bg-primary-container text-on-primary-container font-bold" data-path="event-success-score" href="#"><span class="material-symbols-outlined mr-space-md">score</span>Event Success Score</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ai-event-copilot" href="#"><span class="material-symbols-outlined mr-space-md">auto_awesome</span>AI Event Copilot</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="qr-attendance-scanner" href="#"><span class="material-symbols-outlined mr-space-md">qr_code_scanner</span>QR Attendance Scanner</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="certificates" href="#"><span class="material-symbols-outlined mr-space-md">card_membership</span>Certificates</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="notifications" href="#"><span class="material-symbols-outlined mr-space-md">notifications</span>Notifications</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="profile" href="#"><span class="material-symbols-outlined mr-space-md">person</span>Profile</a></nav></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="flex items-center bg-surface-container-low px-space-md py-space-xs rounded-xl w-96 gap-space-sm"><span class="material-symbols-outlined text-outline text-[20px]">search</span><input class="bg-transparent border-none outline-none text-body-md text-on-surface w-full" placeholder="Search events, certificates, users..." type="text"/></div><div class="flex items-center gap-space-md"><button class="w-10 h-10 rounded-full hover:bg-surface-container-high flex items-center justify-center transition-colors relative"><span class="material-symbols-outlined text-on-surface-variant">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 bg-surface min-h-screen p-space-xl"><div class="flex flex-col w-full">
+<!-- Executive Summary & Metric Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg mb-space-xl">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_4px_12px_-2px_rgba(16,42,67,0.08)] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-body-sm text-on-surface-variant font-medium">Avg Success Score</span>
+<span class="p-space-xs rounded-full bg-primary-fixed text-on-primary-fixed-variant material-symbols-outlined text-[20px]">score</span>
+</div>
+<div>
+<div class="flex items-baseline gap-space-sm">
+<span class="text-headline-lg text-primary font-bold">88.4</span>
+<span class="text-body-sm text-outline">/ 100</span>
+</div>
+<div class="flex items-center gap-space-xs mt-space-xs text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="text-label-sm font-semibold">+6.8% vs last month</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_4px_12px_-2px_rgba(16,42,67,0.08)] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-body-sm text-on-surface-variant font-medium">Top Category</span>
+<span class="p-space-xs rounded-full bg-secondary-fixed text-on-secondary-fixed-variant material-symbols-outlined text-[20px]">workspace_premium</span>
+</div>
+<div>
+<div class="text-headline-md text-primary font-bold truncate">Tech &amp; AI Hackathons</div>
+<div class="flex items-center gap-space-xs mt-space-xs text-on-surface-variant">
+<span class="text-label-sm">Avg Score: 94.2 / 100</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_4px_12px_-2px_rgba(16,42,67,0.08)] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-body-sm text-on-surface-variant font-medium">Events Evaluated</span>
+<span class="p-space-xs rounded-full bg-surface-container-high text-on-surface material-symbols-outlined text-[20px]">event_available</span>
+</div>
+<div>
+<div class="text-headline-lg text-primary font-bold">142</div>
+<div class="flex items-center gap-space-xs mt-space-xs text-on-surface-variant">
+<span class="text-label-sm">Across 8 campus departments</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_4px_12px_-2px_rgba(16,42,67,0.08)] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-body-sm text-on-surface-variant font-medium">MoM Success Growth</span>
+<span class="p-space-xs rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant material-symbols-outlined text-[20px]">insights</span>
+</div>
+<div>
+<div class="text-headline-lg text-on-tertiary-container font-bold">+6.8%</div>
+<div class="flex items-center gap-space-xs mt-space-xs text-on-surface-variant">
+<span class="text-label-sm">Driven by QR check-in boost</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Algorithm Breakdown Section -->
+<div class="bg-primary-container text-on-primary-container rounded-xl p-space-xl mb-space-xl relative overflow-hidden shadow-xl">
+<div class="absolute right-0 top-0 w-96 h-96 bg-gradient-to-br from-transparent via-secondary/10 to-transparent rounded-full pointer-events-none"></div>
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-lg mb-space-lg relative z-10">
+<div>
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">analytics</span>
+<span class="text-label-md text-tertiary-fixed-dim uppercase tracking-wider font-bold">Scoring Methodology</span>
+</div>
+<h2 class="text-headline-lg text-on-primary font-bold">Success Score Algorithm Breakdown</h2>
+</div>
+<div class="flex gap-space-sm">
+<button class="bg-surface/10 hover:bg-surface/20 text-on-primary px-space-md py-space-sm rounded-lg text-body-sm font-medium transition-all flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+          Adjust Weights
+        </button>
+<button class="bg-secondary text-on-secondary px-space-md py-space-sm rounded-lg text-body-sm font-medium transition-all flex items-center gap-space-xs shadow-md">
+<span class="material-symbols-outlined text-[18px]">download</span>
+          Export Formula Specs
+        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg relative z-10">
+<!-- Pillar 1 -->
+<div class="bg-surface/5 backdrop-blur-md rounded-xl p-space-lg border border-surface/10">
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-headline-md text-on-primary font-bold">30%</span>
+<span class="px-space-sm py-space-xs bg-secondary/20 text-secondary-fixed-dim rounded-full text-label-sm font-bold">Demand &amp; Capacity</span>
+</div>
+<h3 class="text-headline-sm text-on-primary mb-space-xs">Registrations</h3>
+<p class="text-body-sm text-on-primary-container">Measures capacity utilization, RSVP conversion speed, and waitlist velocity.</p>
+<div class="mt-space-md pt-space-md border-t border-surface/10 flex justify-between text-body-sm">
+<span class="text-outline-variant">Avg Utilization</span>
+<span class="text-on-primary font-semibold">92.4%</span>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="bg-surface/5 backdrop-blur-md rounded-xl p-space-lg border border-surface/10">
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-headline-md text-on-primary font-bold">40%</span>
+<span class="px-space-sm py-space-xs bg-tertiary-container text-tertiary-fixed-dim rounded-full text-label-sm font-bold">Verified Presence</span>
+</div>
+<h3 class="text-headline-sm text-on-primary mb-space-xs">Attendance Rate</h3>
+<p class="text-body-sm text-on-primary-container">Check-in verification via QR scanners and anti-fraud telemetry mapping.</p>
+<div class="mt-space-md pt-space-md border-t border-surface/10 flex justify-between text-body-sm">
+<span class="text-outline-variant">Avg Check-in</span>
+<span class="text-on-primary font-semibold">86.1%</span>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="bg-surface/5 backdrop-blur-md rounded-xl p-space-lg border border-surface/10">
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-headline-md text-on-primary font-bold">30%</span>
+<span class="px-space-sm py-space-xs bg-primary-fixed text-on-primary-fixed-variant rounded-full text-label-sm font-bold">Satisfaction &amp; NPS</span>
+</div>
+<h3 class="text-headline-sm text-on-primary mb-space-xs">Attendee Feedback</h3>
+<p class="text-body-sm text-on-primary-container">Post-event ratings, sentiment analysis from reviews, and NPS scoring.</p>
+<div class="mt-space-md pt-space-md border-t border-surface/10 flex justify-between text-body-sm">
+<span class="text-outline-variant">Avg Rating</span>
+<span class="text-on-primary font-semibold">4.8 / 5.0</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Controls & Filters -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg mb-space-lg shadow-[0_4px_12px_-2px_rgba(16,42,67,0.08)] flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-space-md flex-1">
+<div class="flex items-center bg-surface-container px-space-md py-space-sm rounded-lg gap-space-sm w-64">
+<span class="material-symbols-outlined text-outline text-[20px]">filter_list</span>
+<select class="bg-transparent border-none outline-none text-body-md text-on-surface w-full cursor-pointer">
+<option>All Departments</option>
+<option>Computer Science</option>
+<option>Business School</option>
+<option>Engineering</option>
+<option>Arts &amp; Sciences</option>
+</select>
+</div>
+<div class="flex items-center bg-surface-container px-space-md py-space-sm rounded-lg gap-space-sm w-48">
+<span class="material-symbols-outlined text-outline text-[20px]">calendar_month</span>
+<select class="bg-transparent border-none outline-none text-body-md text-on-surface w-full cursor-pointer">
+<option>Last 30 Days</option>
+<option>This Semester</option>
+<option>Year to Date</option>
+</select>
+</div>
+<div class="flex items-center bg-surface-container px-space-md py-space-sm rounded-lg gap-space-sm w-48">
+<span class="material-symbols-outlined text-outline text-[20px]">grade</span>
+<select class="bg-transparent border-none outline-none text-body-md text-on-surface w-full cursor-pointer">
+<option>All Tiers</option>
+<option>Elite (90-100)</option>
+<option>Great (80-89)</option>
+<option>Good (70-79)</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="bg-surface-container hover:bg-surface-container-high text-on-surface px-space-md py-space-sm rounded-lg text-body-sm font-medium transition-all flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+        Reset Filters
+      </button>
+<button class="bg-primary hover:bg-primary-container text-on-primary px-space-md py-space-sm rounded-lg text-body-sm font-medium transition-all flex items-center gap-space-xs shadow-md">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+        Export Report
+      </button>
+</div>
+</div>
+<!-- Leaderboard & Table Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg mb-space-xl">
+<!-- Main Table (2 cols) -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_4px_12px_-2px_rgba(16,42,67,0.08)] flex flex-col">
+<div class="flex items-center justify-between mb-space-lg">
+<div>
+<h3 class="text-headline-sm text-primary font-bold">Event Success Leaderboard</h3>
+<p class="text-body-sm text-on-surface-variant">Campus-wide verified event evaluations</p>
+</div>
+<span class="text-label-md text-outline">Showing 5 of 142 events</span>
+</div>
+<div class="overflow-x-auto flex-1">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-container-high text-label-md text-on-surface-variant">
+<th class="py-space-md px-space-sm font-semibold">Event Name</th>
+<th class="py-space-md px-space-sm font-semibold">Category</th>
+<th class="py-space-md px-space-sm font-semibold">Registrations</th>
+<th class="py-space-md px-space-sm font-semibold">Attendance</th>
+<th class="py-space-md px-space-sm font-semibold">Feedback</th>
+<th class="py-space-md px-space-sm font-semibold">Success Score</th>
+</tr>
+</thead>
+<tbody class="text-body-sm divide-y divide-surface-container-low">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer bg-primary-fixed/10">
+<td class="py-space-md px-space-sm font-semibold text-primary">Global FinTech Hackathon</td>
+<td class="py-space-md px-space-sm text-on-surface-variant">Tech &amp; AI</td>
+<td class="py-space-md px-space-sm">450 / 450</td>
+<td class="py-space-md px-space-sm font-semibold text-on-tertiary-container">96%</td>
+<td class="py-space-md px-space-sm">4.9 / 5.0</td>
+<td class="py-space-md px-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-bold text-primary">96</span>
+<span class="px-space-sm py-0.5 rounded-full text-label-sm bg-tertiary-fixed text-on-tertiary-fixed font-bold">Elite</span>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-md px-space-sm font-semibold text-primary">AI Ethics &amp; Future Summit</td>
+<td class="py-space-md px-space-sm text-on-surface-variant">Symposium</td>
+<td class="py-space-md px-space-sm">320 / 350</td>
+<td class="py-space-md px-space-sm font-semibold text-on-tertiary-container">88%</td>
+<td class="py-space-md px-space-sm">4.7 / 5.0</td>
+<td class="py-space-md px-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-bold text-primary">89</span>
+<span class="px-space-sm py-0.5 rounded-full text-label-sm bg-secondary-fixed text-on-secondary-fixed font-bold">Great</span>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-md px-space-sm font-semibold text-primary">Biotech Innovation Pitch</td>
+<td class="py-space-md px-space-sm text-on-surface-variant">Science</td>
+<td class="py-space-md px-space-sm">210 / 250</td>
+<td class="py-space-md px-space-sm font-semibold text-on-tertiary-container">82%</td>
+<td class="py-space-md px-space-sm">4.5 / 5.0</td>
+<td class="py-space-md px-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-bold text-primary">84</span>
+<span class="px-space-sm py-0.5 rounded-full text-label-sm bg-secondary-fixed text-on-secondary-fixed font-bold">Great</span>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-md px-space-sm font-semibold text-primary">Campus Career &amp; Networking Fair</td>
+<td class="py-space-md px-space-sm text-on-surface-variant">Career</td>
+<td class="py-space-md px-space-sm">1,200 / 1,500</td>
+<td class="py-space-md px-space-sm font-semibold text-on-tertiary-container">78%</td>
+<td class="py-space-md px-space-sm">4.1 / 5.0</td>
+<td class="py-space-md px-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-bold text-primary">76</span>
+<span class="px-space-sm py-0.5 rounded-full text-label-sm bg-surface-container-high text-on-surface font-bold">Good</span>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer">
+<td class="py-space-md px-space-sm font-semibold text-primary">Startup Founders Panel</td>
+<td class="py-space-md px-space-sm text-on-surface-variant">Business</td>
+<td class="py-space-md px-space-sm">180 / 200</td>
+<td class="py-space-md px-space-sm font-semibold text-on-tertiary-container">91%</td>
+<td class="py-space-md px-space-sm">4.8 / 5.0</td>
+<td class="py-space-md px-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-bold text-primary">91</span>
+<span class="px-space-sm py-0.5 rounded-full text-label-sm bg-tertiary-fixed text-on-tertiary-fixed font-bold">Elite</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Deep-Dive Event Analytics Card (1 col) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_4px_12px_-2px_rgba(16,42,67,0.08)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="px-space-sm py-space-xs rounded-full bg-primary-fixed text-on-primary-fixed-variant text-label-sm font-bold">Deep-Dive Analytics</span>
+<span class="material-symbols-outlined text-outline">analytics</span>
+</div>
+<h3 class="text-headline-sm text-primary font-bold mb-space-xs">Global FinTech Hackathon</h3>
+<p class="text-body-sm text-on-surface-variant mb-space-lg">Detailed pillar telemetry and AI optimization review</p>
+<!-- Pillar progress breakdown -->
+<div class="space-y-space-md mb-space-lg">
+<div>
+<div class="flex justify-between text-body-sm mb-space-xs">
+<span class="font-medium text-on-surface">Registrations (Demand)</span>
+<span class="font-bold text-primary">100 / 100</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full w-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm mb-space-xs">
+<span class="font-medium text-on-surface">Attendance Rate (Check-in)</span>
+<span class="font-bold text-primary">96 / 100</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 96%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm mb-space-xs">
+<span class="font-medium text-on-surface">Attendee Feedback (NPS)</span>
+<span class="font-bold text-primary">92 / 100</span>
+</div>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 92%;"></div>
+</div>
+</div>
+</div>
+<!-- AI Recommendation Box -->
+<div class="bg-tertiary-container text-on-tertiary-container rounded-xl p-space-md mb-space-md">
+<div class="flex items-center gap-space-sm mb-space-xs">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[18px]">auto_awesome</span>
+<span class="text-label-md font-bold text-tertiary-fixed">AI-Driven Recommendation</span>
+</div>
+<p class="text-body-sm text-on-primary-container">To push future hackathons into a 98+ score, introduce faster QR check-in lanes to reduce the initial 10-minute queue congestion peak.</p>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-container text-on-primary py-space-md rounded-xl text-body-md font-semibold transition-all shadow-md flex items-center justify-center gap-space-xs">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+        View Full Event Report
+      </button>
+</div>
+</div>
+</div></main></div></body></html>

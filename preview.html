@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoEvent Hub — End-to-End Event Management Automation (Instant Preview)</title>
+  
+  <!-- Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc',
+              400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca',
+              800: '#3730a3', 900: '#312e81', 950: '#1e1b4b',
+            },
+            accent: {
+              cyan: '#06b6d4', emerald: '#10b981', amber: '#f59e0b', rose: '#f43f5e', purple: '#a855f7'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            serif: ['Cinzel', 'Georgia', 'serif'],
+          },
+          boxShadow: {
+            'glow': '0 0 25px -5px rgba(99, 102, 241, 0.4)',
+            'glow-emerald': '0 0 25px -5px rgba(16, 185, 129, 0.4)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- QRCode.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body { background-color: #020617; color: #f8fafc; }
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.5);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.6); }
+    ::-webkit-scrollbar-thumb { background: rgba(99, 102, 241, 0.3); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(99, 102, 241, 0.6); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Universal Header / Navigation -->
+  <header class="sticky top-0 z-50 glass-panel border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 gap-4">
+        
+        <!-- Logo -->
+        <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('attendee', 'landing')">
+          <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center shadow-glow text-white font-bold">
+            <i data-lucide="qr-code" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-200 bg-clip-text text-transparent">
+                AutoEvent Hub
+              </span>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                Zero Manual Admin
+              </span>
+            </div>
+            <p class="text-xs text-slate-400 hidden sm:block">
+              Global Tech & AI Summit 2026 • Oct 24-26
+            </p>
+          </div>
+        </div>
+
+        <!-- Mode Switcher -->
+        <div class="flex items-center bg-slate-900/90 p-1 rounded-xl border border-slate-800">
+          <button id="btn-mode-attendee" onclick="switchView('attendee', 'landing')" class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-md transition-all">
+            <i data-lucide="user-check" class="w-4 h-4"></i>
+            <span>Attendee Portal</span>
+          </button>
+          <button id="btn-mode-admin" onclick="switchView('admin', 'dashboard')" class="flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span>Admin Console</span>
+            <span class="ml-1 px-1.5 py-0.2 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-mono border border-emerald-500/30">Live</span>
+          </button>
+        </div>
+
+        <!-- Right: Persona Switcher & Reset -->
+        <div class="flex items-center gap-3">
+          <div class="hidden md:flex items-center gap-2 bg-slate-900/80 px-2.5 py-1 rounded-lg border border-slate-800 text-xs">
+            <span class="text-slate-400 text-[11px]">Testing as:</span>
+            <select id="persona-selector" onchange="changePersona(this.value)" class="bg-transparent text-indigo-300 font-medium text-xs focus:outline-none cursor-pointer">
+              <!-- Populated via JS -->
+            </select>
+          </div>
+          <button onclick="resetData()" title="Reset to fresh demo dataset" class="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-800 transition-colors">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Sub Navigation -->
+      <div id="subnav-attendee" class="flex items-center gap-1 sm:gap-2 py-2 overflow-x-auto border-t border-slate-800/60 text-xs font-medium">
+        <button onclick="switchView('attendee', 'landing')" id="tab-landing" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 bg-slate-800 text-white font-semibold">
+          <i data-lucide="calendar" class="w-3.5 h-3.5 text-indigo-400"></i>
+          <span>Event Info & Register</span>
+        </button>
+        <button onclick="switchView('attendee', 'pass')" id="tab-pass" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-slate-400 hover:text-slate-200">
+          <i data-lucide="qr-code" class="w-3.5 h-3.5 text-cyan-400"></i>
+          <span>My Digital Pass & QR</span>
+        </button>
+        <button onclick="switchView('attendee', 'feedback')" id="tab-feedback" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-slate-400 hover:text-slate-200">
+          <i data-lucide="message-square" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span>Event Feedback</span>
+        </button>
+        <button onclick="switchView('attendee', 'certificate')" id="tab-certificate" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-slate-400 hover:text-slate-200">
+          <i data-lucide="award" class="w-3.5 h-3.5 text-purple-400"></i>
+          <span>Official Certificate</span>
+        </button>
+        <button onclick="switchView('attendee', 'verify')" id="tab-verify" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-slate-400 hover:text-slate-200">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>Public Credential Verifier</span>
+        </button>
+      </div>
+
+      <div id="subnav-admin" class="hidden flex items-center gap-1 sm:gap-2 py-2 overflow-x-auto border-t border-slate-800/60 text-xs font-medium">
+        <button onclick="switchView('admin', 'dashboard')" id="tab-dashboard" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 bg-slate-800 text-white font-semibold">
+          <i data-lucide="layout-dashboard" class="w-3.5 h-3.5 text-indigo-400"></i>
+          <span>Dashboard & KPIs</span>
+        </button>
+        <button onclick="switchView('admin', 'scanner')" id="tab-scanner" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-slate-400 hover:text-slate-200">
+          <i data-lucide="scan-line" class="w-3.5 h-3.5 text-cyan-400"></i>
+          <span>Live QR Gate Scanner</span>
+        </button>
+        <button onclick="switchView('admin', 'attendees')" id="tab-attendees" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-slate-400 hover:text-slate-200">
+          <i data-lucide="users" class="w-3.5 h-3.5 text-blue-400"></i>
+          <span>Attendees & Deduplication</span>
+        </button>
+        <button onclick="switchView('admin', 'comms')" id="tab-comms" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-slate-400 hover:text-slate-200">
+          <i data-lucide="send" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span>Automated Comms Engine</span>
+        </button>
+        <button onclick="switchView('admin', 'reports')" id="tab-reports" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-slate-400 hover:text-slate-200">
+          <i data-lucide="bar-chart-3" class="w-3.5 h-3.5 text-rose-400"></i>
+          <span>Reports & CSV Export</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Viewport Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- ATTENDEE: LANDING VIEW -->
+    <div id="view-landing" class="space-y-12">
+      <!-- Hero -->
+      <section class="relative overflow-hidden rounded-3xl glass-panel p-8 sm:p-12 border border-slate-800 shadow-2xl">
+        <div class="relative z-10 max-w-3xl space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-semibold">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-cyan-400"></i>
+            <span>Registration is Live • Automated Express Check-In</span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            Global Tech & AI Automation Summit 2026
+          </h1>
+          <p class="text-base text-slate-300 leading-relaxed">
+            Connecting 5,000+ Innovators, Engineers & Industry Leaders. Experience next-generation automated attendance, express contactless badge verification, and instant verifiable certificates of attendance.
+          </p>
+          <div class="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-300 pt-2">
+            <div class="flex items-center gap-2 bg-slate-900/80 px-3.5 py-2 rounded-xl border border-slate-800">
+              <i data-lucide="calendar" class="w-4 h-4 text-indigo-400"></i>
+              <span>October 24-26, 2026</span>
+            </div>
+            <div class="flex items-center gap-2 bg-slate-900/80 px-3.5 py-2 rounded-xl border border-slate-800">
+              <i data-lucide="map-pin" class="w-4 h-4 text-cyan-400"></i>
+              <span>Metropolitan Convention Center, SF & Virtual</span>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <button onclick="openRegisterModal()" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-brand-600 hover:from-indigo-500 hover:to-brand-500 text-white font-semibold text-sm shadow-glow flex items-center gap-2 transition-all">
+              <span>Register Now — Free Access</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            <button onclick="switchView('attendee', 'pass')" class="px-5 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm flex items-center gap-2 transition-all">
+              <i data-lucide="qr-code" class="w-4 h-4 text-indigo-400"></i>
+              <span>Already Registered? View My Pass</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Highlights -->
+      <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+            <i data-lucide="zap" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-white">Instant Contactless Badging</h3>
+          <p class="text-xs text-slate-400">Register once and your encrypted digital badge with dynamic QR pass is generated immediately. Add to mobile wallet or scan directly from screen.</p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-white">Zero Duplicate Entry</h3>
+          <p class="text-xs text-slate-400">Smart identity deduplication safeguards against repeated entries and fragmented data. Check-in history syncs across all gates in real-time.</p>
+        </div>
+        <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
+            <i data-lucide="award" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base font-bold text-white">Automated Verifiable Certificate</h3>
+          <p class="text-xs text-slate-400">Once you attend and complete the brief feedback survey, your verified completion certificate is unlocked with a public cryptographic hash.</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ATTENDEE: DIGITAL PASS VIEW -->
+    <div id="view-pass" class="hidden max-w-4xl mx-auto space-y-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 glass-panel p-5 rounded-2xl border border-slate-800">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-400 flex items-center gap-1.5 mb-1">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            Verified Event Access Token
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold text-white">Digital Pass & QR Badge</h2>
+          <p class="text-xs text-slate-400">Present this high-contrast QR code at any entrance gate for 1-second express entry.</p>
+        </div>
+        <div class="flex items-center gap-2.5">
+          <button onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 text-xs font-semibold flex items-center gap-1.5">
+            <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+            <span>Print Badge</span>
+          </button>
+          <button onclick="switchView('admin', 'scanner')" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shadow-glow flex items-center gap-1.5">
+            <i data-lucide="scan-line" class="w-4 h-4"></i>
+            <span>Test Scan in Gate Scanner</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Badge Preview Container -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        <div class="md:col-span-6 flex justify-center">
+          <div class="w-full max-w-sm rounded-3xl overflow-hidden glass-card border-2 border-slate-700 shadow-2xl relative">
+            <div class="absolute top-3 left-1/2 -translate-x-1/2 w-10 h-2.5 bg-slate-950 rounded-full border border-slate-700 z-20"></div>
+            <div class="p-6 pt-8 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 border-b border-slate-800 relative">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] uppercase tracking-widest text-indigo-300 font-bold">OFFICIAL ACCESS PASS</span>
+                  <h3 class="text-lg font-extrabold text-white">GTAIS 2026</h3>
+                </div>
+                <span id="pass-tier-badge" class="px-2.5 py-1 rounded-full text-[11px] uppercase font-black tracking-wider border bg-amber-500/20 text-amber-300 border-amber-500/40">VIP</span>
+              </div>
+            </div>
+            <!-- QR Display -->
+            <div class="p-6 bg-slate-950 flex flex-col items-center justify-center space-y-3">
+              <div id="pass-qrcode" class="bg-white p-3 rounded-2xl shadow-xl border-4 border-indigo-500/20"></div>
+              <div class="text-center">
+                <div id="pass-attendee-id" class="font-mono text-sm font-extrabold text-indigo-300">EVT-80921</div>
+                <div id="pass-qr-token" class="text-[10px] font-mono text-slate-500 uppercase tracking-widest truncate max-w-xs">EVT-80921-VIP-VERIFIED</div>
+              </div>
+            </div>
+            <!-- Details -->
+            <div class="p-6 bg-slate-900/90 space-y-4 border-t border-slate-800 text-xs">
+              <div>
+                <h4 id="pass-name" class="text-xl font-black text-white">Alex Morgan</h4>
+                <p id="pass-job" class="text-slate-300 font-medium">Lead Systems Architect</p>
+                <p id="pass-org" class="text-indigo-400 font-semibold">TechCorp Global</p>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+                <span class="text-slate-400">Gate Status:</span>
+                <span id="pass-status" class="text-emerald-400 font-bold flex items-center gap-1.5">
+                  <i data-lucide="check-circle-2" class="w-4 h-4"></i> Checked In
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline / Instructions -->
+        <div class="md:col-span-6 space-y-6">
+          <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-4">
+            <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+              <i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i>
+              <span>Automated Lifecycle Progression</span>
+            </h3>
+            <div class="space-y-4 text-xs">
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <div>
+                  <div class="font-bold text-white">Registration & Anti-Duplication Check</div>
+                  <div class="text-slate-400">Verified unique record. No duplicate entry created.</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div id="step-checkin-icon" class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <div>
+                  <div class="font-bold text-white">Contactless Gate Check-In</div>
+                  <div id="step-checkin-text" class="text-slate-400">Scanned and verified at gate scanner.</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div id="step-feedback-icon" class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0"><i data-lucide="clock" class="w-3.5 h-3.5"></i></div>
+                <div>
+                  <div class="font-bold text-white">Post-Session Feedback Survey</div>
+                  <div id="step-feedback-text" class="text-slate-400">Complete survey to unlock verifiable certificate.</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div id="step-cert-icon" class="w-6 h-6 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0"><i data-lucide="award" class="w-3.5 h-3.5"></i></div>
+                <div>
+                  <div class="font-bold text-white">Verifiable Certificate Issuance</div>
+                  <div id="step-cert-text" class="text-slate-400">Download high-resolution vector PDF credential.</div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-slate-800">
+              <button onclick="switchView('attendee', 'feedback')" class="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-glow">
+                <i data-lucide="message-square" class="w-4 h-4"></i>
+                <span>Proceed to Post-Event Feedback</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATTENDEE: FEEDBACK VIEW -->
+    <div id="view-feedback" class="hidden max-w-2xl mx-auto space-y-6">
+      <div class="glass-panel p-6 rounded-2xl border border-slate-800">
+        <div class="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span>Post-Event Evaluation & Gated Certificate Unlock</span>
+        </div>
+        <h2 class="text-2xl font-bold text-white">Event Experience Feedback</h2>
+        <p class="text-xs text-slate-400 mt-1">Completing this survey automatically unlocks your official verifiable certificate of attendance.</p>
+      </div>
+
+      <form onsubmit="handleFeedbackSubmit(event)" class="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6 text-xs">
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-400">Rate Your Experience (1-5 Stars)</h4>
+          <div class="flex justify-between items-center py-2 border-b border-slate-800">
+            <span class="text-slate-300">Overall Summit Experience</span>
+            <div class="flex gap-1 text-amber-400 cursor-pointer text-lg">★★★★★</div>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-slate-800">
+            <span class="text-slate-300">Check-In Speed & Automation</span>
+            <div class="flex gap-1 text-amber-400 cursor-pointer text-lg">★★★★★</div>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b border-slate-800">
+            <span class="text-slate-300">Speaker & Content Quality</span>
+            <div class="flex gap-1 text-amber-400 cursor-pointer text-lg">★★★★★</div>
+          </div>
+        </div>
+
+        <div class="space-y-3 pt-2">
+          <div class="flex justify-between items-center">
+            <span class="font-bold text-slate-200">How likely are you to recommend to a colleague? (NPS)</span>
+            <span class="text-indigo-400 font-bold font-mono text-sm">10/10</span>
+          </div>
+          <div class="grid grid-cols-11 gap-1">
+            <button type="button" class="py-2 bg-slate-900 border border-slate-800 text-slate-400 rounded-lg">0</button>
+            <button type="button" class="py-2 bg-slate-900 border border-slate-800 text-slate-400 rounded-lg">1</button>
+            <button type="button" class="py-2 bg-slate-900 border border-slate-800 text-slate-400 rounded-lg">2</button>
+            <button type="button" class="py-2 bg-slate-900 border border-slate-800 text-slate-400 rounded-lg">3</button>
+            <button type="button" class="py-2 bg-slate-900 border border-slate-800 text-slate-400 rounded-lg">4</button>
+            <button type="button" class="py-2 bg-slate-900 border border-slate-800 text-slate-400 rounded-lg">5</button>
+            <button type="button" class="py-2 bg-slate-900 border border-slate-800 text-slate-400 rounded-lg">6</button>
+            <button type="button" class="py-2 bg-slate-900 border border-slate-800 text-slate-400 rounded-lg">7</button>
+            <button type="button" class="py-2 bg-slate-900 border border-slate-800 text-slate-400 rounded-lg">8</button>
+            <button type="button" class="py-2 bg-slate-900 border border-slate-800 text-slate-400 rounded-lg">9</button>
+            <button type="button" class="py-2 bg-emerald-500 text-white font-bold rounded-lg shadow-glow-emerald">10</button>
+          </div>
+        </div>
+
+        <div class="space-y-2 pt-2">
+          <label class="block font-bold text-slate-200">Testimonial or Feedback Comments</label>
+          <textarea id="feedback-comments" rows="3" class="w-full bg-slate-900 border border-slate-700/80 rounded-xl p-3 text-slate-100 placeholder-slate-500" placeholder="Zero lines at check-in, smooth automated experience!"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-brand-600 hover:from-indigo-500 hover:to-brand-500 text-white font-semibold text-sm shadow-glow flex items-center justify-center gap-2">
+          <i data-lucide="message-square" class="w-4 h-4"></i>
+          <span>Submit Feedback & Unlock Official Certificate</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- ATTENDEE: CERTIFICATE VIEW -->
+    <div id="view-certificate" class="hidden max-w-4xl mx-auto space-y-6">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 glass-panel p-5 rounded-2xl border border-slate-800">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-purple-400 flex items-center gap-1.5 mb-1">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            Official Verified Credential
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold text-white">Certificate of Attendance & Completion</h2>
+          <p class="text-xs text-slate-400 mt-0.5 font-mono">ID: <span id="cert-id-tag" class="text-purple-300 font-bold">CERT-GTAIS-80921</span> • Cryptographically Verified</p>
+        </div>
+        <button onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs shadow-glow flex items-center gap-2">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>Print / Save Vector PDF</span>
+        </button>
+      </div>
+
+      <!-- Printable Certificate Graphic -->
+      <div class="flex justify-center overflow-x-auto p-2">
+        <div id="certificate-card" class="w-[820px] h-[540px] shrink-0 rounded-3xl p-10 relative overflow-hidden border-4 border-indigo-500/40 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-950 flex flex-col justify-between shadow-2xl">
+          <div class="text-center space-y-2 relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-700 text-xs font-mono uppercase tracking-widest text-indigo-300">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-cyan-400"></i>
+              <span>OFFICIAL VERIFIED SUMMIT CREDENTIAL</span>
+            </div>
+            <h1 class="text-3xl font-extrabold tracking-wider uppercase text-white font-serif">Certificate of Attendance</h1>
+            <p class="text-xs text-slate-400 tracking-widest uppercase">THIS RECOGNITION IS PROUDLY CONFERRED UPON</p>
+          </div>
+
+          <div class="text-center my-auto space-y-2 relative z-10">
+            <div id="cert-recipient-name" class="text-4xl font-extrabold tracking-tight text-white drop-shadow-lg">Alex Morgan</div>
+            <div id="cert-recipient-org" class="text-sm text-indigo-300 font-medium">TechCorp Global • Lead Systems Architect</div>
+            <div class="w-48 h-0.5 bg-gradient-to-r from-transparent via-indigo-500 to-transparent mx-auto mt-2"></div>
+            <p class="text-xs text-slate-300 max-w-xl mx-auto pt-2">
+              For distinguished participation and active engagement in the <strong class="text-white">Global Tech & AI Automation Summit 2026</strong>, contributing to forward-looking discussions on enterprise automation.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-3 items-end pt-6 border-t border-slate-800/80 relative z-10 text-xs">
+            <div class="text-left space-y-1">
+              <div class="font-serif italic text-lg text-indigo-200">Dr. Elena Rostova</div>
+              <div class="w-36 h-0.5 bg-slate-700"></div>
+              <div class="text-[10px] font-bold text-slate-300">Summit Executive Chair</div>
+            </div>
+            <div class="flex flex-col items-center justify-center">
+              <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-amber-600 to-amber-300 p-0.5 flex items-center justify-center shadow-lg">
+                <div class="w-full h-full rounded-full bg-slate-950 flex flex-col items-center justify-center text-center p-1">
+                  <i data-lucide="award" class="w-4 h-4 text-amber-400"></i>
+                  <span class="text-[7px] font-bold uppercase text-amber-200">AUTHENTIC</span>
+                </div>
+              </div>
+              <span class="text-[9px] font-mono text-slate-400 mt-1">Issued: Oct 2026</span>
+            </div>
+            <div class="text-right font-mono">
+              <div class="text-[10px] font-bold text-slate-300">Verification Hash</div>
+              <div id="cert-code" class="text-purple-400 font-bold text-[10px]">CERT-GTAIS-80921</div>
+              <div class="text-[8px] text-slate-500">HASH: a9f8b2c174e3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATTENDEE: PUBLIC VERIFIER -->
+    <div id="view-verify" class="hidden max-w-2xl mx-auto space-y-6">
+      <div class="text-center space-y-2">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+          <i data-lucide="shield-check" class="w-4 h-4"></i>
+          <span>Public Credential Verification Portal</span>
+        </div>
+        <h2 class="text-2xl font-bold text-white">Verify Certificate Authenticity</h2>
+        <p class="text-xs text-slate-400">Confirm official summit credentials and check-in records against the immutable registry.</p>
+      </div>
+
+      <div class="glass-panel p-3 rounded-2xl border border-slate-800 flex gap-2">
+        <input id="verify-input" type="text" value="CERT-GTAIS-80921" class="flex-1 bg-transparent px-3 text-xs text-slate-100 font-mono focus:outline-none" placeholder="Enter Certificate ID..." />
+        <button onclick="testVerifyCertificate()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs">
+          Verify Credential
+        </button>
+      </div>
+
+      <div id="verify-result-box" class="glass-panel rounded-2xl p-6 border-2 border-emerald-500/40 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-2.5 text-emerald-400 font-bold text-sm">
+            <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+            <span>Official Credential Verified Authentic</span>
+          </div>
+          <span class="text-[10px] font-mono bg-emerald-500/10 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/20">STATUS: VALID</span>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-400">Recipient:</span>
+            <div class="font-bold text-white text-sm mt-0.5">Alex Morgan</div>
+            <div class="text-[11px] text-indigo-400">TechCorp Global</div>
+          </div>
+          <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-400">Event:</span>
+            <div class="font-bold text-white text-sm mt-0.5">GTAIS 2026</div>
+            <div class="text-[11px] text-slate-400">Oct 24-26, 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN: DASHBOARD -->
+    <div id="view-dashboard" class="hidden space-y-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 glass-panel p-6 rounded-3xl border border-slate-800">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-400 flex items-center gap-1.5 mb-1">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            Live Automated Operations
+          </span>
+          <h2 class="text-2xl font-extrabold text-white">Executive Event Operations Center</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Zero duplicate entry • Real-time gate validation • Automated triggers active</p>
+        </div>
+        <button onclick="switchView('admin', 'scanner')" class="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs shadow-glow flex items-center gap-2">
+          <i data-lucide="scan-line" class="w-4 h-4"></i>
+          <span>Launch Live Gate Scanner</span>
+        </button>
+      </div>
+
+      <!-- KPIs -->
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-2">
+          <span class="text-xs text-slate-400 font-semibold">Registered</span>
+          <div id="stat-registered" class="text-3xl font-black text-white font-mono">8</div>
+          <div class="text-[11px] text-emerald-400">100% Deduplicated</div>
+        </div>
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-2">
+          <span class="text-xs text-slate-400 font-semibold">Checked In Gate</span>
+          <div id="stat-checkedin" class="text-3xl font-black text-emerald-400 font-mono">5</div>
+          <div class="text-[11px] text-slate-400"><span id="stat-turnout">63%</span> turnout rate</div>
+        </div>
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-2">
+          <span class="text-xs text-slate-400 font-semibold">Avg Feedback</span>
+          <div class="text-3xl font-black text-amber-400 font-mono">4.9 ★</div>
+          <div class="text-[11px] text-slate-400">4 responses</div>
+        </div>
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-2">
+          <span class="text-xs text-slate-400 font-semibold">NPS Score</span>
+          <div class="text-3xl font-black text-cyan-400 font-mono">+100</div>
+          <div class="text-[11px] text-emerald-400">World-class</div>
+        </div>
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-2 col-span-2 lg:col-span-1">
+          <span class="text-xs text-slate-400 font-semibold">Certificates</span>
+          <div id="stat-certs" class="text-3xl font-black text-purple-400 font-mono">4</div>
+          <div class="text-[11px] text-purple-300">Automated Hash</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN: LIVE SCANNER -->
+    <div id="view-scanner" class="hidden space-y-8">
+      <div class="glass-panel p-5 rounded-2xl border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center gap-1.5 mb-1">
+            <i data-lucide="scan-line" class="w-4 h-4"></i>
+            Real-Time Anti-Duplicate Gate Scanner
+          </span>
+          <h2 class="text-xl sm:text-2xl font-bold text-white">Live QR Scanner & Gate Terminal</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Equipped with duplicate check-in detection and audio cues.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4">
+            <label class="block text-xs font-bold text-slate-300 mb-1">Manual Rapid Check-In / Barcode Input</label>
+            <div class="flex gap-2">
+              <input id="scanner-manual-input" type="text" placeholder="Enter Attendee ID (e.g. EVT-80925)..." class="flex-1 bg-slate-900 border border-slate-700/80 rounded-xl px-3 py-2.5 text-xs text-slate-100 font-mono focus:outline-none focus:border-indigo-500" />
+              <button onclick="handleManualScan()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs shadow-glow">
+                Check In
+              </button>
+            </div>
+
+            <!-- 1-Click Test Scenarios -->
+            <div class="pt-4 border-t border-slate-800 space-y-2">
+              <span class="text-xs text-slate-400 font-semibold block">⚡ 1-Click Test Scenarios:</span>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <button onclick="simulateScan('EVT-80925')" class="px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 font-mono">
+                  Marcus Sterling (Fresh Check-in &rarr; Green Chime)
+                </button>
+                <button onclick="simulateScan('EVT-80921')" class="px-3 py-1.5 rounded-lg bg-amber-500/10 text-amber-300 border border-amber-500/30 font-mono">
+                  Alex Morgan (Duplicate &rarr; Amber Warning)
+                </button>
+                <button onclick="simulateScan('EVT-FAKE-999')" class="px-3 py-1.5 rounded-lg bg-rose-500/10 text-rose-300 border border-rose-500/30 font-mono">
+                  Fake Ticket (Invalid &rarr; Red Buzz)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scan Result Screen -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300">Terminal Scan Feedback</h3>
+            <div id="scanner-feedback-box" class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 text-center text-xs text-slate-400 py-10">
+              Awaiting next ticket scan...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN: ATTENDEES & DEDUPLICATION -->
+    <div id="view-attendees" class="hidden space-y-6">
+      <div class="glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-indigo-400 flex items-center gap-1.5 mb-1">
+            <i data-lucide="users" class="w-4 h-4"></i>
+            Single Source of Truth
+          </span>
+          <h2 class="text-2xl font-extrabold text-white">Attendee Management & Deduplication</h2>
+          <p class="text-xs text-slate-400 mt-0.5">Unified attendee registry with real-time check-in and certificate statuses.</p>
+        </div>
+        <button onclick="exportCSV()" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 text-xs font-semibold flex items-center gap-2">
+          <i data-lucide="download" class="w-4 h-4 text-emerald-400"></i>
+          <span>Export Normalized CSV</span>
+        </button>
+      </div>
+
+      <!-- Attendees Table -->
+      <div class="glass-panel rounded-3xl border border-slate-800 overflow-hidden">
+        <table class="w-full text-left text-xs text-slate-300">
+          <thead class="bg-slate-900/90 text-slate-400 uppercase tracking-wider font-semibold border-b border-slate-800">
+            <tr>
+              <th class="px-5 py-3.5">Attendee</th>
+              <th class="px-5 py-3.5">Organization</th>
+              <th class="px-5 py-3.5">Tier</th>
+              <th class="px-5 py-3.5">Gate Status</th>
+              <th class="px-5 py-3.5">Cert Status</th>
+            </tr>
+          </thead>
+          <tbody id="attendees-table-body" class="divide-y divide-slate-800/60 font-medium">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ADMIN: COMMUNICATIONS -->
+    <div id="view-comms" class="hidden space-y-6">
+      <div class="glass-panel p-6 rounded-3xl border border-slate-800">
+        <h2 class="text-2xl font-extrabold text-white">Automated Communications & Dispatch Logs</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Automated event triggers dispatch confirmation emails, Wi-Fi alerts, and certificate download links.</p>
+      </div>
+
+      <div class="glass-panel rounded-3xl border border-slate-800 p-6 space-y-4">
+        <h3 class="text-sm font-bold text-white">Dispatched Lifecycle Messages</h3>
+        <div id="comms-log-list" class="space-y-2 text-xs">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN: REPORTS -->
+    <div id="view-reports" class="hidden space-y-6">
+      <div class="glass-panel p-6 rounded-3xl border border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-extrabold text-white">Executive Reports & Data Export</h2>
+          <p class="text-xs text-slate-400 mt-0.5">One-click comprehensive CSV export ready for Excel and BI reporting.</p>
+        </div>
+        <button onclick="exportCSV()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-semibold text-xs shadow-glow flex items-center gap-2">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>Download Complete CSV Report</span>
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-3">
+          <h4 class="text-sm font-bold text-white">Turnout Ratio</h4>
+          <div class="text-3xl font-black text-emerald-400 font-mono">63% Checked-In</div>
+          <p class="text-xs text-slate-400">5 out of 8 registered attendees have completed gate check-in.</p>
+        </div>
+        <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-3">
+          <h4 class="text-sm font-bold text-white">Admin Time Saved</h4>
+          <div class="text-3xl font-black text-indigo-400 font-mono">~36.5 Hours</div>
+          <p class="text-xs text-slate-400">Zero manual spreadsheet entry, automatic QR generation, and automated PDF certificate issuing.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Registration Modal -->
+  <div id="modal-register" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+    <div class="relative w-full max-w-lg glass-panel rounded-2xl p-6 sm:p-8 border border-slate-700 shadow-2xl space-y-5">
+      <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">&times;</button>
+      <div>
+        <h3 class="text-xl font-bold text-white">Register for GTAIS 2026</h3>
+        <p class="text-xs text-slate-400">Instant digital pass generation with smart real-time duplicate prevention.</p>
+      </div>
+
+      <!-- Duplicate Alert -->
+      <div id="register-dup-alert" class="hidden p-3.5 bg-amber-500/15 border border-amber-500/40 text-amber-200 rounded-xl text-xs space-y-2">
+        <div class="font-bold flex items-center gap-1.5">
+          <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i>
+          <span>Already Registered! Duplicate Prevented.</span>
+        </div>
+        <p>An attendee with this email is already registered. Click below to open their existing pass.</p>
+        <button type="button" onclick="retrieveExistingPass()" class="w-full py-2 bg-amber-500/25 hover:bg-amber-500/40 rounded-lg font-semibold text-amber-100 text-xs">
+          Open Existing Digital Pass &rarr;
+        </button>
+      </div>
+
+      <form onsubmit="handleRegistrationSubmit(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="block text-slate-300 mb-1">Full Name *</label>
+          <input id="reg-name" type="text" required placeholder="e.g. Maya Lin" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-100" />
+        </div>
+        <div>
+          <label class="block text-slate-300 mb-1">Email Address *</label>
+          <input id="reg-email" type="email" required oninput="checkRegDuplicate(this.value)" placeholder="maya.lin@enterprise.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-100" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 mb-1">Organization</label>
+            <input id="reg-org" type="text" placeholder="e.g. FutureAI Labs" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-100" />
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-1">Pass Tier</label>
+            <select id="reg-tier" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-200">
+              <option value="general">General ($0)</option>
+              <option value="vip">VIP Access ($299)</option>
+              <option value="speaker">Speaker</option>
+              <option value="student">Student</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-indigo-600 to-brand-600 text-white font-semibold text-xs shadow-glow">
+          Complete Automated Registration
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Audio Synthesis & State Machine JS -->
+  <script>
+    // State
+    let attendees = [
+      { id: "EVT-80921", name: "Alex Morgan", email: "alex.morgan@techcorp.io", organization: "TechCorp Global", jobTitle: "Lead Systems Architect", tier: "vip", checkedIn: true, checkedInAt: "08:45 AM", feedbackSubmitted: true, certificateGenerated: true, certId: "CERT-GTAIS-80921" },
+      { id: "EVT-80922", name: "Dr. Elena Rostova", email: "elena.rostova@ai-research.org", organization: "Institute of Autonomous AI", jobTitle: "Chief AI Architect", tier: "speaker", checkedIn: true, checkedInAt: "08:15 AM", feedbackSubmitted: true, certificateGenerated: true, certId: "CERT-GTAIS-80922" },
+      { id: "EVT-80923", name: "Devon Vance", email: "devon.vance@cloudscale.net", organization: "CloudScale Systems", jobTitle: "DevOps Engineer", tier: "general", checkedIn: true, checkedInAt: "09:02 AM", feedbackSubmitted: false, certificateGenerated: false, certId: null },
+      { id: "EVT-80924", name: "Priya Sharma", email: "priya.sharma@stanford.edu", organization: "Stanford Robotics Lab", jobTitle: "Graduate Researcher", tier: "student", checkedIn: true, checkedInAt: "08:50 AM", feedbackSubmitted: true, certificateGenerated: true, certId: "CERT-GTAIS-80924" },
+      { id: "EVT-80925", name: "Marcus Sterling", email: "marcus.sterling@apexpartners.com", organization: "Apex Enterprise Partners", jobTitle: "Partner & VP", tier: "sponsor", checkedIn: false, checkedInAt: null, feedbackSubmitted: false, certificateGenerated: false, certId: null },
+      { id: "EVT-80926", name: "Chloe Zhao", email: "chloe.zhao@cyberfortress.io", organization: "CyberFortress Security", jobTitle: "Senior Analyst", tier: "general", checkedIn: true, checkedInAt: "09:15 AM", feedbackSubmitted: false, certificateGenerated: false, certId: null },
+      { id: "EVT-80927", name: "Liam O'Connor", email: "liam.oconnor@dublincapital.ie", organization: "Horizon Ventures", jobTitle: "Managing Director", tier: "vip", checkedIn: false, checkedInAt: null, feedbackSubmitted: false, certificateGenerated: false, certId: null },
+      { id: "EVT-80928", name: "Samantha Reed", email: "samantha.reed@quantum-labs.com", organization: "Quantum Research", jobTitle: "Staff Engineer", tier: "general", checkedIn: true, checkedInAt: "08:35 AM", feedbackSubmitted: true, certificateGenerated: true, certId: "CERT-GTAIS-80928" }
+    ];
+
+    let currentAttendeeId = "EVT-80921";
+    let activeRole = "attendee";
+    let activeTab = "landing";
+
+    // Audio Chimes using Web Audio API
+    class SoundFX {
+      constructor() { this.ctx = null; }
+      init() {
+        if (!this.ctx) {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (AudioCtx) this.ctx = new AudioCtx();
+        }
+      }
+      playSuccess() {
+        this.init(); if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.frequency.setValueAtTime(587.33, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        osc.connect(gain); gain.connect(this.ctx.destination);
+        osc.start(now); osc.stop(now + 0.35);
+      }
+      playWarning() {
+        this.init(); if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.setValueAtTime(370, now + 0.12);
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+        osc.connect(gain); gain.connect(this.ctx.destination);
+        osc.start(now); osc.stop(now + 0.4);
+      }
+      playError() {
+        this.init(); if (!this.ctx) return;
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(220, now);
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+        osc.connect(gain); gain.connect(this.ctx.destination);
+        osc.start(now); osc.stop(now + 0.3);
+      }
+    }
+    const sfx = new SoundFX();
+
+    // View Switching
+    function switchView(role, tab) {
+      activeRole = role;
+      activeTab = tab;
+
+      // Mode button states
+      const btnAtt = document.getElementById('btn-mode-attendee');
+      const btnAdm = document.getElementById('btn-mode-admin');
+      const subAtt = document.getElementById('subnav-attendee');
+      const subAdm = document.getElementById('subnav-admin');
+
+      if (role === 'attendee') {
+        btnAtt.className = "flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-md";
+        btnAdm.className = "flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200";
+        subAtt.classList.remove('hidden');
+        subAdm.classList.add('hidden');
+      } else {
+        btnAdm.className = "flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-md";
+        btnAtt.className = "flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-slate-200";
+        subAdm.classList.remove('hidden');
+        subAtt.classList.add('hidden');
+      }
+
+      // Hide all view panels
+      const allViews = ['landing', 'pass', 'feedback', 'certificate', 'verify', 'dashboard', 'scanner', 'attendees', 'comms', 'reports'];
+      allViews.forEach(v => {
+        const el = document.getElementById('view-' + v);
+        if (el) el.classList.add('hidden');
+        const btn = document.getElementById('tab-' + v);
+        if (btn) btn.className = "px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-slate-400 hover:text-slate-200";
+      });
+
+      // Show selected panel
+      const targetView = document.getElementById('view-' + tab);
+      if (targetView) targetView.classList.remove('hidden');
+      const targetBtn = document.getElementById('tab-' + tab);
+      if (targetBtn) targetBtn.className = "px-3 py-1.5 rounded-lg flex items-center gap-1.5 bg-slate-800 text-white font-semibold";
+
+      render();
+    }
+
+    // Persona Selector
+    function populatePersonas() {
+      const sel = document.getElementById('persona-selector');
+      sel.innerHTML = '';
+      attendees.forEach(a => {
+        const opt = document.createElement('option');
+        opt.value = a.id;
+        opt.textContent = `${a.name} (${a.tier.toUpperCase()} • ${a.checkedIn ? 'Checked-in' : 'Registered'})`;
+        opt.className = "bg-slate-900 text-slate-200";
+        if (a.id === currentAttendeeId) opt.selected = true;
+        sel.appendChild(opt);
+      });
+    }
+
+    function changePersona(id) {
+      currentAttendeeId = id;
+      render();
+    }
+
+    // QR Code Render in Pass
+    function renderQRCode(text) {
+      const container = document.getElementById('pass-qrcode');
+      container.innerHTML = '';
+      new QRCode(container, {
+        text: text,
+        width: 190,
+        height: 190,
+        colorDark: "#020617",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    // Render Data to Active View
+    function render() {
+      const cur = attendees.find(a => a.id === currentAttendeeId) || attendees[0];
+
+      // Pass View
+      document.getElementById('pass-name').textContent = cur.name;
+      document.getElementById('pass-job').textContent = cur.jobTitle;
+      document.getElementById('pass-org').textContent = cur.organization;
+      document.getElementById('pass-tier-badge').textContent = cur.tier.toUpperCase();
+      document.getElementById('pass-attendee-id').textContent = cur.id;
+      document.getElementById('pass-qr-token').textContent = `${cur.id}-${cur.tier.toUpperCase()}-VERIFIED`;
+      renderQRCode(cur.id);
+
+      const statusEl = document.getElementById('pass-status');
+      if (cur.checkedIn) {
+        statusEl.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Checked In (${cur.checkedInAt || '08:45 AM'})`;
+        statusEl.className = "text-emerald-400 font-bold flex items-center gap-1.5";
+      } else {
+        statusEl.innerHTML = `<i data-lucide="clock" class="w-4 h-4 text-amber-400"></i> Awaiting Gate Entry`;
+        statusEl.className = "text-amber-400 font-semibold flex items-center gap-1.5";
+      }
+
+      // Certificate View
+      document.getElementById('cert-recipient-name').textContent = cur.name;
+      document.getElementById('cert-recipient-org').textContent = `${cur.organization} • ${cur.jobTitle}`;
+      document.getElementById('cert-code').textContent = cur.certId || `CERT-GTAIS-${cur.id.replace('EVT-','')}`;
+      document.getElementById('cert-id-tag').textContent = cur.certId || `CERT-GTAIS-${cur.id.replace('EVT-','')}`;
+
+      // Admin Attendees Table
+      const tbody = document.getElementById('attendees-table-body');
+      tbody.innerHTML = '';
+      attendees.forEach(a => {
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-slate-900/50";
+        tr.innerHTML = `
+          <td class="px-5 py-3.5">
+            <div class="font-bold text-white">${a.name}</div>
+            <div class="text-[11px] text-slate-400 font-mono">${a.id} • ${a.email}</div>
+          </td>
+          <td class="px-5 py-3.5">${a.organization}</td>
+          <td class="px-5 py-3.5 uppercase font-bold text-[10px] text-indigo-300">${a.tier}</td>
+          <td class="px-5 py-3.5">
+            ${a.checkedIn ? '<span class="text-emerald-400 font-bold">✓ Checked In</span>' : '<span class="text-amber-400">Awaiting</span>'}
+          </td>
+          <td class="px-5 py-3.5">
+            ${a.certificateGenerated ? '<span class="text-purple-400 font-bold font-mono">Issued</span>' : '<span class="text-slate-500">Locked</span>'}
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Stats
+      const totalReg = attendees.length;
+      const totalChk = attendees.filter(a => a.checkedIn).length;
+      const totalCert = attendees.filter(a => a.certificateGenerated).length;
+      document.getElementById('stat-registered').textContent = totalReg;
+      document.getElementById('stat-checkedin').textContent = totalChk;
+      document.getElementById('stat-turnout').textContent = Math.round((totalChk/totalReg)*100) + '%';
+      document.getElementById('stat-certs').textContent = totalCert;
+
+      // Comms log
+      const commsList = document.getElementById('comms-log-list');
+      commsList.innerHTML = `
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex justify-between">
+          <div><strong class="text-white">ON_REGISTRATION:</strong> Digital pass & QR issued to Alex Morgan</div>
+          <span class="text-emerald-400 font-bold">Delivered</span>
+        </div>
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex justify-between">
+          <div><strong class="text-white">ON_CHECKIN:</strong> Welcome floorplan and Wi-Fi sent to Alex Morgan</div>
+          <span class="text-emerald-400 font-bold">Delivered</span>
+        </div>
+        <div class="p-3 bg-slate-900 rounded-xl border border-slate-800 flex justify-between">
+          <div><strong class="text-white">ON_FEEDBACK:</strong> Verifiable certificate CERT-GTAIS-80921 unlocked</div>
+          <span class="text-emerald-400 font-bold">Delivered</span>
+        </div>
+      `;
+
+      lucide.createIcons();
+    }
+
+    // Live Scanner Simulation
+    function simulateScan(identifier) {
+      const box = document.getElementById('scanner-feedback-box');
+      const attendee = attendees.find(a => a.id.toLowerCase() === identifier.toLowerCase());
+
+      if (!attendee) {
+        sfx.playError();
+        box.innerHTML = `
+          <div class="p-4 bg-rose-500/20 border-2 border-rose-500/50 rounded-2xl text-rose-200 space-y-1">
+            <div class="font-bold text-sm text-rose-300">❌ ACCESS DENIED / UNRECOGNIZED PASS</div>
+            <p>Pass ID "${identifier}" is not found in registry.</p>
+          </div>
+        `;
+        return;
+      }
+
+      if (attendee.checkedIn) {
+        sfx.playWarning();
+        box.innerHTML = `
+          <div class="p-4 bg-amber-500/20 border-2 border-amber-500/60 rounded-2xl text-amber-200 space-y-2 animate-pulse">
+            <div class="font-bold text-sm text-amber-300">⚠️ DUPLICATE CHECK-IN PREVENTED</div>
+            <p><strong>${attendee.name}</strong> (${attendee.tier.toUpperCase()}) was already checked in at ${attendee.checkedInAt || '08:45 AM'}.</p>
+            <p class="text-[11px] text-slate-400">Anti-fraud protection stops ticket pass reuse.</p>
+          </div>
+        `;
+      } else {
+        sfx.playSuccess();
+        attendee.checkedIn = true;
+        attendee.checkedInAt = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        box.innerHTML = `
+          <div class="p-4 bg-emerald-500/20 border-2 border-emerald-500/50 rounded-2xl text-emerald-200 space-y-2">
+            <div class="font-bold text-sm text-emerald-300">✅ ENTRY VERIFIED & GRANTED</div>
+            <h4 class="text-base font-extrabold text-white">${attendee.name}</h4>
+            <p class="text-[11px] text-emerald-300">${attendee.organization} • ${attendee.tier.toUpperCase()} TIER</p>
+            <p class="text-[10px] text-slate-400">Automated welcome alert triggered.</p>
+          </div>
+        `;
+        populatePersonas();
+        render();
+      }
+    }
+
+    function handleManualScan() {
+      const input = document.getElementById('scanner-manual-input');
+      if (input.value) {
+        simulateScan(input.value.trim());
+        input.value = '';
+      }
+    }
+
+    // Modal
+    function openRegisterModal() { document.getElementById('modal-register').classList.remove('hidden'); }
+    function closeRegisterModal() { 
+      document.getElementById('modal-register').classList.add('hidden');
+      document.getElementById('register-dup-alert').classList.add('hidden');
+    }
+
+    // Real-Time Duplicate Check
+    function checkRegDuplicate(val) {
+      const alertBox = document.getElementById('register-dup-alert');
+      const match = attendees.find(a => a.email.toLowerCase() === val.trim().toLowerCase());
+      if (match) {
+        alertBox.classList.remove('hidden');
+      } else {
+        alertBox.classList.add('hidden');
+      }
+    }
+
+    function retrieveExistingPass() {
+      const email = document.getElementById('reg-email').value;
+      const match = attendees.find(a => a.email.toLowerCase() === email.trim().toLowerCase());
+      if (match) {
+        currentAttendeeId = match.id;
+        closeRegisterModal();
+        switchView('attendee', 'pass');
+      }
+    }
+
+    function handleRegistrationSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('reg-email').value;
+      const match = attendees.find(a => a.email.toLowerCase() === email.trim().toLowerCase());
+      if (match) {
+        document.getElementById('register-dup-alert').classList.remove('hidden');
+        return;
+      }
+      const newId = `EVT-${Math.floor(10000 + Math.random() * 90000)}`;
+      const name = document.getElementById('reg-name').value;
+      const org = document.getElementById('reg-org').value || 'Independent';
+      const tier = document.getElementById('reg-tier').value;
+
+      const newAttendee = {
+        id: newId,
+        name,
+        email,
+        organization: org,
+        jobTitle: 'Summit Participant',
+        tier,
+        checkedIn: false,
+        checkedInAt: null,
+        feedbackSubmitted: false,
+        certificateGenerated: false,
+        certId: null
+      };
+      attendees.unshift(newAttendee);
+      currentAttendeeId = newId;
+      confetti({ particleCount: 70, spread: 60 });
+      closeRegisterModal();
+      populatePersonas();
+      switchView('attendee', 'pass');
+    }
+
+    // Feedback Submit
+    function handleFeedbackSubmit(e) {
+      e.preventDefault();
+      const cur = attendees.find(a => a.id === currentAttendeeId);
+      if (cur) {
+        cur.feedbackSubmitted = true;
+        cur.certificateGenerated = true;
+        cur.certId = `CERT-GTAIS-${cur.id.replace('EVT-','')}`;
+      }
+      confetti({ particleCount: 100, spread: 70 });
+      switchView('attendee', 'certificate');
+    }
+
+    // Public Verifier Test
+    function testVerifyCertificate() {
+      const val = document.getElementById('verify-input').value.trim();
+      const res = document.getElementById('verify-result-box');
+      if (val.toUpperCase().includes('CERT-GTAIS') || val.toUpperCase().includes('EVT')) {
+        res.innerHTML = `
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-2.5 text-emerald-400 font-bold text-sm">
+              <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+              <span>Official Credential Verified Authentic</span>
+            </div>
+            <span class="text-[10px] font-mono bg-emerald-500/10 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/20">STATUS: VALID</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+              <span class="text-slate-400">Recipient:</span>
+              <div class="font-bold text-white text-sm mt-0.5">Alex Morgan</div>
+              <div class="text-[11px] text-indigo-400">TechCorp Global</div>
+            </div>
+            <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+              <span class="text-slate-400">Event:</span>
+              <div class="font-bold text-white text-sm mt-0.5">GTAIS 2026</div>
+              <div class="text-[11px] text-slate-400">Oct 24-26, 2026</div>
+            </div>
+          </div>
+        `;
+      } else {
+        res.innerHTML = `
+          <div class="p-4 bg-rose-500/20 border border-rose-500/40 rounded-xl text-rose-300 text-xs">
+            No credential found matching "${val}". Please check the ID.
+          </div>
+        `;
+      }
+      lucide.createIcons();
+    }
+
+    // CSV Export
+    function exportCSV() {
+      let csv = "ID,Name,Email,Organization,Tier,CheckedIn,CheckedInAt,Certificate\n";
+      attendees.forEach(a => {
+        csv += `"${a.id}","${a.name}","${a.email}","${a.organization}","${a.tier}","${a.checkedIn ? 'Yes' : 'No'}","${a.checkedInAt || 'N/A'}","${a.certId || 'N/A'}"\n`;
+      });
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = "gtais_2026_normalized_report.csv";
+      a.click();
+    }
+
+    function resetData() {
+      location.reload();
+    }
+
+    // Initialize
+    window.addEventListener('DOMContentLoaded', () => {
+      populatePersonas();
+      render();
+    });
+  </script>
+</body>
+</html>

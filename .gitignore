@@ -1,0 +1,32 @@
+# Environment Variables (Secrets)
+.env
+.env.local
+.env.*.local
+backend/.env
+
+# Dependencies
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.db
+!backend/data/*.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-container": "#316bf3", "tertiary-container": "#002f2a", "tertiary-fixed-dim": "#6bd8cb", "on-tertiary-fixed-variant": "#005049", "on-primary-fixed-variant": "#314863", "surface-container": "#eceef0", "on-surface-variant": "#43474d", "outline": "#74777e", "primary": "#00152a", "on-secondary-fixed": "#00174b", "tertiary-fixed": "#89f5e7", "surface-dim": "#d8dadc", "on-primary": "#ffffff", "on-background": "#191c1e", "surface": "#f7f9fb", "surface-bright": "#f7f9fb", "on-tertiary": "#ffffff", "on-secondary-container": "#fefcff", "secondary-fixed-dim": "#b4c5ff", "error-container": "#ffdad6", "on-secondary": "#ffffff", "inverse-surface": "#2d3133", "primary-container": "#102a43", "tertiary": "#001815", "inverse-on-surface": "#eff1f3", "surface-tint": "#49607c", "inverse-primary": "#b0c9e8", "on-tertiary-container": "#28a094", "on-tertiary-fixed": "#00201d", "surface-container-high": "#e6e8ea", "on-error-container": "#93000a", "on-secondary-fixed-variant": "#003ea8", "on-error": "#ffffff", "primary-fixed": "#d1e4ff", "on-primary-fixed": "#011d35", "primary-fixed-dim": "#b0c9e8", "background": "#f7f9fb", "surface-container-lowest": "#ffffff", "surface-container-highest": "#e0e3e5", "surface-container-low": "#f2f4f6", "secondary-fixed": "#dbe1ff", "outline-variant": "#c3c6ce", "error": "#ba1a1a", "secondary": "#0051d5", "on-surface": "#191c1e", "surface-variant": "#e0e3e5", "on-primary-container": "#7a92b0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "margin": "2rem", "space-md": "1rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem" }, "fontFamily": { "label-sm": ["Inter"], "body-md": ["Inter"], "label-md": ["Inter"], "headline-xl": ["Inter"], "label-lg": ["Inter"], "headline-lg": ["Inter"], "body-lg": ["Inter"], "headline-md": ["Inter"], "body-sm": ["Inter"], "headline-sm": ["Inter"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "500" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }], "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }] } } } }</script><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/></head><body class="bg-surface font-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col pt-space-xl pb-space-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="px-space-lg mb-space-xl flex items-center gap-space-md"><img alt="Eventora Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEhICH3M45UYZ5jPj-vC2vEEwK5mwaytNcwqqrcBLHuHgtK1zQBA2HRDgnQDZ1bMexVRDBqeRp8NVKqJzgmW2MiBVF3HaI9z4n0JnSytcNTvFI89cKkWVsAfmypLknX8YcJIrciLiH5ZYvhr2S6AA4sKmVkKTxnIoisq3GwxKQnYWEVUVQ0q3YblmIvbyfmEvAbTiY_JJG50S7VDtKtfWdpijdo-xkdad7aGFQ2v7s"/><span class="font-headline-md text-primary font-bold tracking-tight">Eventora</span></div><nav class="flex-1 px-space-md space-y-space-xs overflow-y-auto" data-active-classes="bg-primary-container text-on-primary-container font-bold"><a aria-current="page" class="flex items-center px-space-md py-space-sm rounded-xl transition-all bg-primary-container text-on-primary-container font-bold" data-path="home" href="#"><span class="material-symbols-outlined mr-space-md">home</span>Home</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="explore-events" href="#"><span class="material-symbols-outlined mr-space-md">explore</span>Explore Events</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="student-dashboard" href="#"><span class="material-symbols-outlined mr-space-md">dashboard</span>Student Dashboard</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="admin-analytics" href="#"><span class="material-symbols-outlined mr-space-md">analytics</span>Admin Analytics</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="qr-attendance-scanner" href="#"><span class="material-symbols-outlined mr-space-md">qr_code_scanner</span>QR Attendance Scanner</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="certificates" href="#"><span class="material-symbols-outlined mr-space-md">card_membership</span>Certificates</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="notifications" href="#"><span class="material-symbols-outlined mr-space-md">notifications</span>Notifications</a><a class="flex items-center px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="profile" href="#"><span class="material-symbols-outlined mr-space-md">person</span>Profile</a></nav></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-xl"><div class="flex items-center bg-surface-container-low px-space-md py-space-xs rounded-xl w-96 gap-space-sm"><span class="material-symbols-outlined text-outline text-[20px]">search</span><input class="bg-transparent border-none outline-none text-body-md text-on-surface w-full" placeholder="Search events, certificates, users..." type="text"/></div><div class="flex items-center gap-space-md"><button class="w-10 h-10 rounded-full hover:bg-surface-container-high flex items-center justify-center transition-colors relative"><span class="material-symbols-outlined text-on-surface-variant">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 bg-surface min-h-screen p-space-xl"><div class="flex flex-col w-full">
+<!-- Hero Section -->
+<section class="relative bg-primary text-on-primary rounded-2xl overflow-hidden p-space-xl mb-space-xl shadow-[0_16px_32px_-8px_rgba(16,42,67,0.2)]">
+<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+<div class="absolute right-1/3 -bottom-32 w-80 h-80 rounded-full bg-tertiary-fixed-dim/10 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 max-w-3xl">
+<div class="inline-flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-surface-container-low/10 backdrop-blur-md mb-space-lg text-primary-fixed-dim text-label-md tracking-wider uppercase font-semibold">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+        AUTOMATE EVERY EVENT
+      </div>
+<h1 class="text-headline-xl font-headline-xl mb-space-md text-on-primary tracking-tight">
+        Plan. Automate. Manage. Celebrate.
+      </h1>
+<p class="text-body-lg text-primary-fixed-dim mb-space-xl max-w-2xl leading-relaxed">
+        Eventora manages the complete event lifecycle from creation to certificates and analytics. Streamline your campus or corporate events with zero friction.
+      </p>
+<div class="flex flex-wrap items-center gap-space-md">
+<button class="px-space-xl py-space-md rounded-xl bg-secondary hover:bg-secondary-container text-on-secondary font-label-lg transition-all shadow-[0_4px_16px_rgba(0,81,213,0.4)] flex items-center gap-space-sm">
+<span>Get Started</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="px-space-xl py-space-md rounded-xl bg-surface-container-low/10 hover:bg-surface-container-low/20 text-on-primary font-label-lg transition-all backdrop-blur-md">
+          View Demo
+        </button>
+</div>
+</div>
+<!-- Workflow Steps Banner Inside Hero -->
+<div class="mt-space-xl pt-space-xl border-t border-surface-container-low/10 grid grid-cols-2 md:grid-cols-7 gap-space-md relative z-10">
+<div class="flex flex-col gap-space-xs">
+<span class="text-label-sm text-primary-fixed-dim">01</span>
+<span class="text-label-md font-semibold text-on-primary">Create Event</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="text-label-sm text-primary-fixed-dim">02</span>
+<span class="text-label-md font-semibold text-on-primary">Register</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="text-label-sm text-primary-fixed-dim">03</span>
+<span class="text-label-md font-semibold text-on-primary">Attend</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="text-label-sm text-primary-fixed-dim">04</span>
+<span class="text-label-md font-semibold text-on-primary">Verify</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="text-label-sm text-primary-fixed-dim">05</span>
+<span class="text-label-md font-semibold text-on-primary">Certificate</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="text-label-sm text-primary-fixed-dim">06</span>
+<span class="text-label-md font-semibold text-on-primary">Feedback</span>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="text-label-sm text-primary-fixed-dim">07</span>
+<span class="text-label-md font-semibold text-on-primary">Analytics</span>
+</div>
+</div>
+</section>
+<!-- Statistics Counter Section -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-space-lg mb-space-xl">
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_4px_20px_rgba(16,42,67,0.04)] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-label-md text-on-surface-variant uppercase tracking-wider">Events Managed</span>
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined">event</span>
+</div>
+</div>
+<div>
+<div class="text-headline-lg font-headline-lg text-primary mb-space-xs">500+</div>
+<div class="text-label-sm text-secondary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +24% this month
+        </div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_4px_20px_rgba(16,42,67,0.04)] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-label-md text-on-surface-variant uppercase tracking-wider">Students Registered</span>
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined">groups</span>
+</div>
+</div>
+<div>
+<div class="text-headline-lg font-headline-lg text-primary mb-space-xs">50,000+</div>
+<div class="text-label-sm text-secondary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> +18% growth
+        </div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_4px_20px_rgba(16,42,67,0.04)] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-label-md text-on-surface-variant uppercase tracking-wider">Attendance Tracked</span>
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined">verified</span>
+</div>
+</div>
+<div>
+<div class="text-headline-lg font-headline-lg text-primary mb-space-xs">98%</div>
+<div class="text-label-sm text-secondary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> High precision
+        </div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_4px_20px_rgba(16,42,67,0.04)] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-md">
+<span class="text-label-md text-on-surface-variant uppercase tracking-wider">Certificates Gen.</span>
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined">card_membership</span>
+</div>
+</div>
+<div>
+<div class="text-headline-lg font-headline-lg text-primary mb-space-xs">45,000+</div>
+<div class="text-label-sm text-secondary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">trending_up</span> Instant delivery
+        </div>
+</div>
+</div>
+</section>
+<!-- Feature Cards Grid -->
+<section class="mb-space-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-md">
+<div>
+<span class="text-label-md text-secondary font-semibold uppercase tracking-wider block mb-space-xs">Platform Capabilities</span>
+<h2 class="text-headline-lg font-headline-lg text-primary">Everything you need to run elite events</h2>
+</div>
+<p class="text-body-md text-on-surface-variant max-w-md">
+        Powerful automated modules designed to remove administrative drag and elevate participant experience.
+      </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Feature 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_4px_20px_rgba(16,42,67,0.04)] hover:shadow-[0_8px_30px_rgba(16,42,67,0.08)] transition-all group">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">add_circle</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-space-sm">Event Creation</h3>
+<p class="text-body-md text-on-surface-variant mb-space-md">
+          Launch fully branded event pages, customize ticket tiers, and configure scheduling parameters within minutes.
+        </p>
+<a class="inline-flex items-center gap-1 text-secondary font-label-md font-semibold hover:underline" href="#">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_4px_20px_rgba(16,42,67,0.04)] hover:shadow-[0_8px_30px_rgba(16,42,67,0.08)] transition-all group">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">how_to_reg</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-space-sm">Smart Registration</h3>
+<p class="text-body-md text-on-surface-variant mb-space-md">
+          Dynamic custom fields, automated waitlists, and seamless approval workflows for secure entry management.
+        </p>
+<a class="inline-flex items-center gap-1 text-secondary font-label-md font-semibold hover:underline" href="#">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_4px_20px_rgba(16,42,67,0.04)] hover:shadow-[0_8px_30px_rgba(16,42,67,0.08)] transition-all group">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-space-sm">QR Attendance</h3>
+<p class="text-body-md text-on-surface-variant mb-space-md">
+          Lightning-fast contactless check-ins via mobile scanners with instant synchronization to attendee rosters.
+        </p>
+<a class="inline-flex items-center gap-1 text-secondary font-label-md font-semibold hover:underline" href="#">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+<!-- Feature 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_4px_20px_rgba(16,42,67,0.04)] hover:shadow-[0_8px_30px_rgba(16,42,67,0.08)] transition-all group">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-space-sm">Automated Notifications</h3>
+<p class="text-body-md text-on-surface-variant mb-space-md">
+          Trigger targeted email and SMS reminders based on participant behavior and schedule updates.
+        </p>
+<a class="inline-flex items-center gap-1 text-secondary font-label-md font-semibold hover:underline" href="#">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+<!-- Feature 5 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_4px_20px_rgba(16,42,67,0.04)] hover:shadow-[0_8px_30px_rgba(16,42,67,0.08)] transition-all group">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">military_tech</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-space-sm">Certificate Generation</h3>
+<p class="text-body-md text-on-surface-variant mb-space-md">
+          Auto-generate verified cryptographic certificates and dispatch them instantly upon session completion.
+        </p>
+<a class="inline-flex items-center gap-1 text-secondary font-label-md font-semibold hover:underline" href="#">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+<!-- Feature 6 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-[0_4px_20px_rgba(16,42,67,0.04)] hover:shadow-[0_8px_30px_rgba(16,42,67,0.08)] transition-all group">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center mb-space-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">insights</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-primary mb-space-sm">Feedback & Analytics</h3>
+<p class="text-body-md text-on-surface-variant mb-space-md">
+          Gather actionable post-event insights with automated feedback surveys and comprehensive reporting dashboards.
+        </p>
+<a class="inline-flex items-center gap-1 text-secondary font-label-md font-semibold hover:underline" href="#">
+<span>Learn more</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Interactive Highlight Banner -->
+<section class="bg-surface-container-low rounded-2xl p-space-xl flex flex-col md:flex-row items-center justify-between gap-space-xl">
+<div class="max-w-xl">
+<span class="text-label-md text-secondary font-semibold uppercase tracking-wider block mb-space-xs">Ready to transform your events?</span>
+<h2 class="text-headline-lg font-headline-lg text-primary mb-space-md">Join hundreds of institutions using Eventora today.</h2>
+<p class="text-body-md text-on-surface-variant mb-space-lg">
+        Deploy your first automated event in less than 5 minutes. No complex configuration required.
+      </p>
+<div class="flex items-center gap-space-md">
+<button class="px-space-lg py-space-sm rounded-xl bg-secondary hover:bg-secondary-container text-on-secondary font-label-lg transition-all shadow-[0_4px_16px_rgba(0,81,213,0.3)]">
+          Start Free Trial
+        </button>
+<button class="px-space-lg py-space-sm rounded-xl bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-lg transition-all shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+          Contact Sales
+        </button>
+</div>
+</div>
+<div class="w-full md:w-96 h-64 rounded-xl overflow-hidden shadow-[0_8px_30px_rgba(16,42,67,0.08)]">
+<img class="w-full h-full object-cover" data-alt="Modern corporate dashboard showing event analytics graphs and metrics in professional navy and blue tones with crisp typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs0bcDi6_43gpE4h2QwEi2H8XjTMAOO46sKZtwEu-RyJd2KT7X6fWyzgPjSCXy9g0c7qqb8zTgmq7aA7hEM28uDJvfDv1ThLWCAJx0-eM53d2QHCltg2mGazKB0yBTTVbtQApwmCGnmhqj0TcFtT1vqKkLW8NwmhAPqkeR9Sc9ed6Un8B6tJrijMKIQuBo2tC2HPbz0Vm-DKUFFgoY4sMrDf65R13Yf5V-VMiapcJE"/>
+</div>
+</section>
+</div></main></div></body></html>
