@@ -104,7 +104,7 @@ export const BackendStatusBadge = () => {
                   </div>
                   <div className="text-[11px] mt-0.5 text-slate-600">
                     {status.online
-                      ? 'Vision OCR, OpenCV preprocessing, and SQLite pharmacy stock queries are served live at http://localhost:8000.'
+                      ? 'Dynamic QR, attendance telemetry, and SQLite event queries are served live at http://localhost:8000.'
                       : 'FastAPI server at http://localhost:8000 is unreachable. Using verified local fallback datasets.'}
                   </div>
                 </div>
@@ -113,19 +113,19 @@ export const BackendStatusBadge = () => {
               <div className="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-2 text-xs">
                 <div className="flex justify-between items-center text-slate-700">
                   <span className="flex items-center gap-1.5 font-medium">
-                    <Database className="w-3.5 h-3.5 text-teal-600" /> Database Engine
+                    <Database className="w-3.5 h-3.5 text-blue-600" /> Database Engine
                   </span>
-                  <span className="font-mono text-slate-900 font-semibold">SQLite (genericswap.db)</span>
+                  <span className="font-mono text-slate-900 font-semibold">SQLite (eventora.db)</span>
                 </div>
                 <div className="flex justify-between items-center text-slate-700">
                   <span className="flex items-center gap-1.5 font-medium">
-                    <Server className="w-3.5 h-3.5 text-teal-600" /> API Gateway
+                    <Server className="w-3.5 h-3.5 text-blue-600" /> API Gateway
                   </span>
                   <span className="font-mono text-slate-900 font-semibold">http://localhost:8000</span>
                 </div>
                 <div className="flex justify-between items-center text-slate-700">
                   <span className="flex items-center gap-1.5 font-medium">
-                    <ShieldCheck className="w-3.5 h-3.5 text-teal-600" /> Non-Diagnostic Guard
+                    <ShieldCheck className="w-3.5 h-3.5 text-blue-600" /> Anti-Fraud Guard
                   </span>
                   <span className="text-emerald-700 font-bold">ENFORCED</span>
                 </div>
