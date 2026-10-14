@@ -170,39 +170,53 @@ export const EventProvider = ({ children }) => {
         .order('date', { ascending: true });
 
       if (!evError && dbEvents && dbEvents.length > 0) {
-        setEvents(dbEvents.map((d) => ({
-          id: d.id,
-          title: d.title,
-          description: d.description || '',
-          category: d.category || 'Technical',
-          date: d.date,
-          displayDate: d.date,
-          startTime: d.start_time || '09:00 AM',
-          endTime: d.end_time || '05:00 PM',
-          venue: d.venue || 'Auditorium A',
-          building: 'Tech Center',
-          organizer: 'Dept. of Eventora',
-          capacity: d.capacity || 100,
-          registeredCount: d.event_registrations ? d.event_registrations.length || 0 : 0,
-          attendanceCount: d.attendance ? d.attendance.length || 0 : 0,
-          status: d.status === 'published' ? 'Published' : (d.status === 'ongoing' ? 'Ongoing' : 'Draft'),
-          isLive: d.status === 'ongoing',
-          price: 'Free',
-          department: 'Computer Science',
-          image: d.image_url || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=1000',
-          registrationDeadline: d.registration_deadline,
-          speakers: ['Distinguished Speaker'],
-          agenda: [{ time: '09:00 AM', title: 'Inauguration' }],
-          features: {
-            enableQR: true,
-            enableCertificate: true,
-            enableFeedback: true,
-            enableNotifications: true,
-            enableAICopilot: true
-          },
-          successScore: 90.0,
-          matchReason: 'Curated university event.'
-        })));
+        setEvents(dbEvents.map((d) => {
+          const regCount = d.event_registrations
+            ? (Array.isArray(d.event_registrations)
+                ? (d.event_registrations[0]?.count ?? d.event_registrations.length)
+                : (d.event_registrations.count ?? 0))
+            : 0;
+          const attCount = d.attendance
+            ? (Array.isArray(d.attendance)
+                ? (d.attendance[0]?.count ?? d.attendance.length)
+                : (d.attendance.count ?? 0))
+            : 0;
+
+          return {
+            id: d.id,
+            title: d.title,
+            description: d.description || '',
+            category: d.category || 'Technical',
+            date: d.date,
+            displayDate: d.date,
+            startTime: d.start_time || '09:00 AM',
+            endTime: d.end_time || '05:00 PM',
+            venue: d.venue || 'Auditorium A',
+            building: d.building || 'Campus Main Block',
+            organizer: d.organizer || 'Dept. of Eventora',
+            capacity: d.capacity || 100,
+            registeredCount: regCount,
+            attendanceCount: attCount,
+            status: d.status === 'published' ? 'Published' : (d.status === 'ongoing' ? 'Ongoing' : 'Draft'),
+            isLive: d.status === 'ongoing',
+            price: d.price || 'Free',
+            department: d.department || 'Computer Science',
+            image: d.image_url || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=1000',
+            registrationDeadline: d.registration_deadline,
+            speakers: Array.isArray(d.speakers) ? d.speakers : ['Distinguished Speaker'],
+            agenda: Array.isArray(d.agenda) ? d.agenda : [{ time: '09:00 AM', title: 'Inauguration' }],
+            features: d.features || {
+              enableQR: true,
+              enableCertificate: true,
+              enableFeedback: true,
+              enableNotifications: true,
+              enableAICopilot: true
+            },
+            certificateTypes: Array.isArray(d.certificate_types) ? d.certificate_types : ['participation'],
+            successScore: 90.0,
+            matchReason: 'Curated university event.'
+          };
+        }));
       }
 
       // 2. Fetch Registrations
@@ -431,13 +445,34 @@ export const EventProvider = ({ children }) => {
     // Sync to Supabase
     if (!isDemoMode && studentId) {
       try {
-        await supabase.from('event_registrations').insert({
+        // Query if registration already exists in Supabase
+        const { data: existingReg } = await supabase
+          .from('event_registrations')
+          .select('id')
+          .eq('event_id', eventId)
+          .eq('student_id', studentId)
+          .maybeSingle();
+
+        if (existingReg) {
+          addToast('Already registered for this event', 'info');
+          return true;
+        }
+
+        const { error: insertErr } = await supabase.from('event_registrations').insert({
           event_id: eventId,
           student_id: studentId,
           status: 'confirmed'
         });
-      } catch {
-        // Handled
+
+        if (insertErr) {
+          if (insertErr.code === '23505') {
+            addToast('Already registered for this event', 'info');
+            return true;
+          }
+          console.warn('Supabase event registration note:', insertErr.message);
+        }
+      } catch (err) {
+        console.warn('Supabase registration sync exception:', err);
       }
     }
 
@@ -629,21 +664,30 @@ export const EventProvider = ({ children }) => {
           title: newEvent.title,
           description: newEvent.description,
           category: newEvent.category,
+          department: newEvent.department,
           date: newEvent.date,
           start_time: newEvent.startTime,
           end_time: newEvent.endTime,
           venue: newEvent.venue,
+          building: newEvent.building,
           capacity: newEvent.capacity,
+          price: newEvent.price,
           registration_deadline: newEvent.registrationDeadline,
           status: newEvent.status.toLowerCase(),
-          image_url: newEvent.image
+          image_url: newEvent.image,
+          speakers: newEvent.speakers,
+          agenda: newEvent.agenda,
+          features: newEvent.features,
+          certificate_types: newEvent.certificateTypes
         }).select().single();
 
         if (!error && inserted) {
           newEvent.id = inserted.id;
+        } else if (error) {
+          console.warn('Supabase event insert note (using local fallback state):', error.message);
         }
-      } catch {
-        // Fallback
+      } catch (err) {
+        console.warn('Supabase event creation exception:', err);
       }
     }
 

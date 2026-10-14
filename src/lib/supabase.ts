@@ -18,12 +18,12 @@ const isValidSupabaseConfig = Boolean(
 export const DEMO_MODE: boolean = !isValidSupabaseConfig;
 export const isDemoMode: boolean = DEMO_MODE;
 
-// Safe fallback URL and Anon Key to prevent runtime initialization crashes when unconfigured
-const fallbackUrl = 'https://buznsltebeqmzilreeak.supabase.co';
-const fallbackKey = 'sb_publishable_YMiJNAApHXijfMatUvqy0A_XJVV933v';
+// Safe dummy placeholders to prevent runtime initialization crashes if env vars are missing
+const dummyUrl = 'https://placeholder.supabase.co';
+const dummyKey = 'placeholder-anon-key-prevent-crash';
 
-const supabaseUrl = isValidSupabaseConfig ? envUrl! : fallbackUrl;
-const supabaseAnonKey = isValidSupabaseConfig ? envKey! : fallbackKey;
+const supabaseUrl = isValidSupabaseConfig ? envUrl! : dummyUrl;
+const supabaseAnonKey = isValidSupabaseConfig ? envKey! : dummyKey;
 
 // Create Supabase Client with Auth Persistence in localStorage
 export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseAnonKey, {

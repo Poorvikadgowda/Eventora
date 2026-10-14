@@ -17,6 +17,7 @@ export const EventDetails = () => {
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('upi');
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false);
 
   const event = events.find((e) => e.id === id);
 
@@ -39,11 +40,16 @@ export const EventDetails = () => {
 
   const isPaid = Boolean(event.price && event.price !== 'Free' && event.price !== '₹0');
 
-  const handleRegisterClick = () => {
+  const handleRegisterClick = async () => {
     if (isPaid) {
       setIsPaymentModalOpen(true);
     } else {
-      registerForEvent(event.id, currentUser?.id, currentUser?.email, currentUser?.name);
+      setIsRegistering(true);
+      try {
+        await registerForEvent(event.id, currentUser?.id, currentUser?.email, currentUser?.name);
+      } finally {
+        setIsRegistering(false);
+      }
     }
   };
 
@@ -327,25 +333,34 @@ export const EventDetails = () => {
             ) : (
               <button
                 onClick={handleRegisterClick}
-                disabled={seatsLeft === 0}
+                disabled={seatsLeft === 0 || isRegistering}
                 className={`w-full py-3.5 rounded-xl text-white font-label-lg font-bold transition-all shadow-md flex items-center justify-center gap-2 ${
                   seatsLeft === 0
                     ? 'bg-surface-container-high text-outline cursor-not-allowed'
                     : isPaid
                     ? 'bg-amber-600 hover:bg-amber-700 shadow-amber-900/10'
                     : 'bg-secondary hover:bg-secondary-container'
-                }`}
+                } disabled:opacity-60 disabled:cursor-not-allowed`}
               >
-                <span>
-                  {seatsLeft === 0
-                    ? 'Join Waitlist'
-                    : isPaid
-                    ? `Proceed to Pay & Register (${event.price})`
-                    : 'Register for Event (Free)'}
-                </span>
-                <span className="material-symbols-outlined text-[18px]">
-                  {isPaid ? 'payment' : 'arrow_forward'}
-                </span>
+                {isRegistering ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Registering with Supabase...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>
+                      {seatsLeft === 0
+                        ? 'Join Waitlist'
+                        : isPaid
+                        ? `Proceed to Pay & Register (${event.price})`
+                        : 'Register for Event (Free)'}
+                    </span>
+                    <span className="material-symbols-outlined text-[18px]">
+                      {isPaid ? 'payment' : 'arrow_forward'}
+                    </span>
+                  </>
+                )}
               </button>
             )}
           </div>

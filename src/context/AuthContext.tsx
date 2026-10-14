@@ -210,15 +210,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     };
   }, []);
 
-  // Fetch Profile from Supabase
   // Fetch Profile from Supabase with live counts
-  const fetchProfile = async (userId: string, email: string) => {
+  const fetchProfile = async (userId: string, email: string): Promise<UserProfile | null> => {
     try {
       const { data, error } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', userId)
-        .single();
+        .maybeSingle();
 
       // Retrieve live stats from Supabase
       let registeredCount = 0;
@@ -260,9 +259,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           certificatesCount
         };
         setCurrentUser(prof);
+        return prof;
       } else {
-        // Fallback default profile if trigger hasn't completed yet
-        setCurrentUser({
+        // Fallback default profile and auto-upsert into profiles table
+        const fallbackProf: UserProfile = {
           id: userId,
           name: email.split('@')[0],
           email: email,
@@ -272,16 +272,31 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           attendedCount,
           registeredCount,
           certificatesCount
-        });
+        };
+        
+        try {
+          await supabase.from('profiles').upsert({
+            id: userId,
+            name: fallbackProf.name,
+            email: fallbackProf.email,
+            role: fallbackProf.role,
+            avatar_url: fallbackProf.avatar
+          });
+        } catch {
+          // Ignore
+        }
+
+        setCurrentUser(fallbackProf);
+        return fallbackProf;
       }
     } catch {
-      // In case of error
+      return null;
     } finally {
       setLoading(false);
     }
   };
 
-  // Login handler - supports email, USN, or name
+  // Login handler - supports Supabase Auth, email, USN, or name
   const login = async (
     identifier: string,
     password?: string,
@@ -289,59 +304,72 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   ): Promise<{ success: boolean; user?: UserProfile; error?: string }> => {
     const cleanId = identifier.trim().toLowerCase();
     const storedAccounts = getStoredAccounts();
-    
-    // Look up by email, USN, or Name
+
+    // 1. Try Supabase Auth first when online and identifier looks like an email
+    if (!isDemoMode && cleanId.includes('@') && password) {
+      try {
+        setLoading(true);
+        const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
+          email: cleanId,
+          password: password
+        });
+
+        if (!authError && authData?.user) {
+          const profile = await fetchProfile(authData.user.id, authData.user.email!);
+          const userObj = profile || {
+            id: authData.user.id,
+            name: authData.user.user_metadata?.name || cleanId.split('@')[0],
+            email: authData.user.email || cleanId,
+            role: (authData.user.user_metadata?.role || portalRole) as 'student' | 'admin'
+          };
+          setCurrentUser(userObj);
+          localStorage.setItem(SESSION_ACTIVE_KEY, 'true');
+          localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(userObj));
+          saveStoredAccount({ user: userObj, password });
+          return { success: true, user: userObj };
+        }
+      } catch (err: any) {
+        console.warn('Supabase signIn attempt:', err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    // 2. Fallback to Stored Demo Accounts (supports email, USN, or Name)
     const found = storedAccounts.find(a => 
       a.user.email.toLowerCase() === cleanId ||
       (a.user.usn && a.user.usn.toLowerCase() === cleanId) ||
       a.user.name.toLowerCase() === cleanId
     );
 
-    if (!found) {
-      if (!isDemoMode) {
-        try {
-          setLoading(true);
-          const { data, error } = await supabase.auth.signInWithPassword({
-            email: cleanId,
-            password: password || 'demo123'
-          });
-          if (!error && data.user) {
-            await fetchProfile(data.user.id, data.user.email!);
-            return { success: true };
-          }
-        } catch {
-          // ignore
-        } finally {
-          setLoading(false);
-        }
+    if (found) {
+      const cleanInputPwd = (password || '').replace(/\s+/g, '').toLowerCase();
+      const cleanStoredPwd = (found.password || '').replace(/\s+/g, '').toLowerCase();
+      const acceptablePasswords = [
+        cleanStoredPwd,
+        'password123',
+        'drait2026',
+        'demo123',
+        'ktjmqptnnptkomnz'
+      ];
+
+      if (password && !acceptablePasswords.includes(cleanInputPwd) && cleanInputPwd !== cleanStoredPwd) {
+        return {
+          success: false,
+          error: 'Incorrect password. Please verify your credentials or create a new account.'
+        };
       }
-      return {
-        success: false,
-        error: `No account found with '${identifier}'. Please check your email/USN or create an account.`
-      };
+
+      setCurrentUser(found.user);
+      localStorage.setItem(SESSION_ACTIVE_KEY, 'true');
+      localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(found.user));
+      return { success: true, user: found.user };
     }
 
-    const cleanInputPwd = (password || '').replace(/\s+/g, '').toLowerCase();
-    const cleanStoredPwd = (found.password || '').replace(/\s+/g, '').toLowerCase();
-    const acceptablePasswords = [
-      cleanStoredPwd,
-      'password123',
-      'drait2026',
-      'demo123',
-      'ktjmqptnnptkomnz'
-    ];
-
-    if (password && !acceptablePasswords.includes(cleanInputPwd) && cleanInputPwd !== cleanStoredPwd) {
-      return {
-        success: false,
-        error: 'Incorrect password. Please verify your credentials or create a new account.'
-      };
-    }
-
-    setCurrentUser(found.user);
-    localStorage.setItem(SESSION_ACTIVE_KEY, 'true');
-    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(found.user));
-    return { success: true, user: found.user };
+    return {
+      success: false,
+      error: `No account found with '${identifier}'. Please check your credentials or create a new account.`
+    };
   };
 
   // Register handler - creates real account and logs in
@@ -372,19 +400,10 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       certificatesCount: 0
     };
 
-    saveStoredAccount({ user: newUser, password: data.password });
-    setCurrentUser(newUser);
-
-    // Dispatch welcome & verification pass directly to email (via SMTP or dev simulation)
-    sendAccountVerificationEmailDispatch({
-      email: cleanEmail,
-      name: userName,
-      role: assignedRole
-    }).catch(err => console.debug('Email dispatch notification:', err));
-
+    // Connect to Supabase Auth
     if (!isDemoMode) {
       try {
-        await supabase.auth.signUp({
+        const { data: authData, error: authError } = await supabase.auth.signUp({
           email: cleanEmail,
           password: data.password,
           options: {
@@ -396,10 +415,37 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             }
           }
         });
-      } catch {
-        // Fallback
+
+        if (authData?.user) {
+          newUser.id = authData.user.id;
+          
+          // Upsert directly into public.profiles
+          await supabase.from('profiles').upsert({
+            id: authData.user.id,
+            name: userName,
+            email: cleanEmail,
+            role: assignedRole,
+            usn: userUsn,
+            department: userDept,
+            avatar_url: newUser.avatar
+          });
+        } else if (authError) {
+          console.warn('Supabase Auth signUp note:', authError.message);
+        }
+      } catch (err) {
+        console.warn('Supabase registration sync error:', err);
       }
     }
+
+    saveStoredAccount({ user: newUser, password: data.password });
+    setCurrentUser(newUser);
+
+    // Dispatch welcome & verification pass directly to email (via SMTP or dev simulation)
+    sendAccountVerificationEmailDispatch({
+      email: cleanEmail,
+      name: userName,
+      role: assignedRole
+    }).catch(err => console.debug('Email dispatch notification:', err));
 
     return { success: true, user: newUser };
   };

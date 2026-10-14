@@ -61,7 +61,10 @@ export const CreateEvent = () => {
     { label: 'Concert / Cultural', url: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1000' },
   ];
 
-  const handleSubmit = (isPublished = true) => {
+  // Submission state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (isPublished = true) => {
     if (!title.trim() || !description.trim()) {
       addToast('Please enter an event title and description', 'error');
       return;
@@ -80,35 +83,42 @@ export const CreateEvent = () => {
       ? (feeAmount && feeAmount.trim() ? `₹${feeAmount.trim().replace(/^₹/, '')}` : '₹299')
       : 'Free';
 
-    createEvent({
-      title,
-      description,
-      category,
-      department,
-      date,
-      startTime,
-      endTime,
-      venue,
-      building,
-      organizer,
-      capacity: Number(capacity) || 200,
-      price: finalPrice,
-      image,
-      speakers,
-      agenda,
-      publish: isPublished,
-      features: {
-        enableQR,
-        enableCertificate: !certificateTypes.includes('none'),
-        enableFeedback,
-        enableNotifications,
-        enableAICopilot
-      },
-      certificateTypes: certificateTypes.includes('none') ? ['none'] : certificateTypes
-    });
+    setIsSubmitting(true);
+    try {
+      await createEvent({
+        title,
+        description,
+        category,
+        department,
+        date,
+        startTime,
+        endTime,
+        venue,
+        building,
+        organizer,
+        capacity: Number(capacity) || 200,
+        price: finalPrice,
+        image,
+        speakers,
+        agenda,
+        publish: isPublished,
+        features: {
+          enableQR,
+          enableCertificate: !certificateTypes.includes('none'),
+          enableFeedback,
+          enableNotifications,
+          enableAICopilot
+        },
+        certificateTypes: certificateTypes.includes('none') ? ['none'] : certificateTypes
+      });
 
-    addToast(isPublished ? 'Event published successfully' : 'Event saved as draft', 'success');
-    navigate('/admin/events');
+      addToast(isPublished ? 'Event published and saved to Supabase!' : 'Event saved as draft in Supabase!', 'success');
+      navigate('/admin/events');
+    } catch (err) {
+      addToast('An error occurred while saving the event', 'error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -575,19 +585,30 @@ export const CreateEvent = () => {
         <div className="pt-4 border-t border-surface-container-high flex items-center justify-end gap-3">
           <button
             type="button"
+            disabled={isSubmitting}
             onClick={() => handleSubmit(false)}
-            className="px-6 py-3 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-md font-bold transition-colors"
+            className="px-6 py-3 rounded-xl bg-surface-container-high hover:bg-surface-container-highest text-primary font-label-md font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Save Draft
+            {isSubmitting ? 'Saving...' : 'Save Draft'}
           </button>
 
           <button
             type="button"
+            disabled={isSubmitting}
             onClick={() => handleSubmit(true)}
-            className="px-8 py-3.5 rounded-xl bg-secondary hover:bg-secondary-container text-white font-label-md font-bold transition-all shadow-md flex items-center gap-2"
+            className="px-8 py-3.5 rounded-xl bg-secondary hover:bg-secondary-container text-white font-label-md font-bold transition-all shadow-md flex items-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            <span>Publish Event Live</span>
-            <span className="material-symbols-outlined text-[18px]">publish</span>
+            {isSubmitting ? (
+              <>
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>Saving to Supabase...</span>
+              </>
+            ) : (
+              <>
+                <span>Publish Event Live</span>
+                <span className="material-symbols-outlined text-[18px]">publish</span>
+              </>
+            )}
           </button>
         </div>
       </div>
