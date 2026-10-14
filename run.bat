@@ -1,7 +1,7 @@
 @echo off
-title GenericSwap - Active Molecule & Generic Medicine Finder
+title Eventora - End-to-End Campus Event Management Platform
 echo ===================================================================
-echo   💊 GenericSwap – Active Molecule & Low-Cost Generic Finder
+echo   🎓 Eventora – Campus Event Management, Dynamic QR & Credentials
 echo ===================================================================
 echo.
 
@@ -14,6 +14,6 @@ if %errorlevel% neq 0 (
 )
 
 :: Launch Full-Stack Web Application (FastAPI + React)
-echo Starting GenericSwap Full-Stack System...
+echo Starting Eventora Full-Stack System...
 python run_app.py
 pause

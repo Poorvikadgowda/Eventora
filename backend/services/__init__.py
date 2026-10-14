@@ -1,4 +1,4 @@
 """
-GenericSwap Modular Services Package.
-Includes image validation, preprocessing, OCR evaluation, and clinical matching algorithms.
+Eventora Modular Services Package.
+Includes certificate generation, verification, and automated email dispatch.
 """
